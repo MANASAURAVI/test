@@ -1,6 +1,7 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
 import AboutSection from '../components/AboutSection';
+import SubscribeSection from '../components/SubscribeSection';
 
 export default function AboutPage() {
   return (
@@ -13,6 +14,7 @@ export default function AboutPage() {
         breadcrumb="ABOUT / ABOUT"
       />
       <AboutSection />
+      <SubscribeSection />
     </div>
   );
 }

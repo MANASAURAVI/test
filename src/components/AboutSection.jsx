@@ -48,7 +48,7 @@ const UsersIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF1638" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
     <circle cx="9" cy="7" r="4" />
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+    <path d="M23 21v-2a4 4 0 0 1 0 7.75" />
   </svg>
 );
 
@@ -75,8 +75,25 @@ export default function AboutSection() {
         DHARAMSHALA // HP
       </div>
 
-      <div className="about-container">
+      {/* ── SEPARATE TOP-RIGHT METADATA BADGE (MOVES INDEPENDENTLY) ── */}
+      <div className="about-header-right">
+        <div className="top-coords-group">
+          <span className="coords-location">DHARAMSHALA / HP</span>
+          <span className="coords-numbers">32.2198° N &nbsp; 76.3234° E</span>
+        </div>
+        <div className="top-mountain-badge">
+          <MountainWireframe />
+          <div className="top-badge-divider" />
+          <div className="top-badge-text">
+            <span>HIGHER</span>
+            <span>IDEAS</span>
+            <span>STRONGER</span>
+            <span>SECURITY</span>
+          </div>
+        </div>
+      </div>
 
+      <div className="about-container">
         {/* ── TOP HEADER BAR ── */}
         <div className="about-header-bar">
           <div className="about-header-left">
@@ -90,29 +107,11 @@ export default function AboutSection() {
               PEOPLE <span className="tag-x">×</span> IDEAS <span className="tag-x">×</span> SECURITY <span className="tag-x">×</span> HIMALAYAS
             </div>
           </div>
-
-          {/* Coordinates & Mountain Badge */}
-          <div className="about-header-right">
-            <div className="top-coords-group">
-              <span className="coords-location">DHARAMSHALA / HP</span>
-              <span className="coords-numbers">32.2198° N &nbsp; 76.3234° E</span>
-            </div>
-            <div className="top-mountain-badge">
-              <MountainWireframe />
-              <div className="top-badge-divider" />
-              <div className="top-badge-text">
-                <span>HIGHER</span>
-                <span>IDEAS</span>
-                <span>STRONGER</span>
-                <span>SECURITY</span>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* ── MAIN 2-COLUMN CONTENT ── */}
         <div className="about-main-content">
-          {/* Left Column — Giant Headline & Pull Quote */}
+          {/* Left Column — Big Headline & Pull Quote */}
           <div className="about-col-left">
             <h2 className="about-hero-title">
               <span className="title-bsides">BSIDES</span>
@@ -277,7 +276,6 @@ export default function AboutSection() {
             </p>
           </div>
         </div>
-
       </div>
     </section>
   );
