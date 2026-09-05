@@ -1,0 +1,75 @@
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import RegisterModal from './components/RegisterModal';
+
+import HomePage from './pages/HomePage';
+import TeamPage from './pages/TeamPage';
+import CodeOfConductPage from './pages/CodeOfConductPage';
+import VenuePage from './pages/VenuePage';
+import ReviewBoardPage from './pages/ReviewBoardPage';
+import AdvisoryBoardPage from './pages/AdvisoryBoardPage';
+import SponsorsPage from './pages/SponsorsPage';
+import SpeakersPage from './pages/SpeakersPage';
+import CFPPage from './pages/CFPPage';
+import TrainingsPage from './pages/TrainingsPage';
+import ExhibitionPage from './pages/ExhibitionPage';
+import SchedulePage from './pages/SchedulePage';
+import AwardsPage from './pages/AwardsPage';
+import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+export default function App() {
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const handleOpenRegister = () => setIsRegisterOpen(true);
+  const handleCloseRegister = () => setIsRegisterOpen(false);
+
+  return (
+    <Router>
+      <div className="bsides-app">
+        {/* HEADER / NAVIGATION */}
+        <Navbar onOpenRegister={handleOpenRegister} />
+
+        {/* MAIN ROUTE CONTENT */}
+        <main className="main-content-viewport">
+          <Routes>
+            <Route path="/" element={<HomePage onOpenRegister={handleOpenRegister} />} />
+            
+            {/* OVERVIEW ROUTES */}
+            <Route path="/overview/team" element={<TeamPage />} />
+            <Route path="/overview/code-of-conduct" element={<CodeOfConductPage />} />
+            <Route path="/overview/venue" element={<VenuePage />} />
+            <Route path="/overview/review-board" element={<ReviewBoardPage />} />
+            <Route path="/overview/advisory-board" element={<AdvisoryBoardPage />} />
+
+            {/* CONFERENCE ROUTES */}
+            <Route path="/conference/sponsors" element={<SponsorsPage />} />
+            <Route path="/conference/speakers" element={<SpeakersPage />} />
+            <Route path="/conference/call-for-papers" element={<CFPPage />} />
+
+            {/* SCHEDULE ROUTES */}
+            <Route path="/schedule/trainings" element={<TrainingsPage onOpenRegister={handleOpenRegister} />} />
+            <Route path="/schedule/exhibition" element={<ExhibitionPage />} />
+            <Route path="/schedule" element={<SchedulePage />} />
+
+            {/* DIRECT ROUTES */}
+            <Route path="/awards" element={<AwardsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+
+            {/* 404 CATCH-ALL ROUTE */}
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+
+        {/* FOOTER */}
+        <Footer />
+
+        {/* REGISTRATION MODAL */}
+        <RegisterModal isOpen={isRegisterOpen} onClose={handleCloseRegister} />
+      </div>
+    </Router>
+  );
+}
