@@ -8,16 +8,11 @@ import RegisterModal from './components/RegisterModal';
 import HomePage from './pages/HomePage';
 import TeamPage from './pages/TeamPage';
 import CodeOfConductPage from './pages/CodeOfConductPage';
-import VenuePage from './pages/VenuePage';
-import ReviewBoardPage from './pages/ReviewBoardPage';
 import AdvisoryBoardPage from './pages/AdvisoryBoardPage';
 import SponsorsPage from './pages/SponsorsPage';
 import SpeakersPage from './pages/SpeakersPage';
 import CFPPage from './pages/CFPPage';
-import TrainingsPage from './pages/TrainingsPage';
-import ExhibitionPage from './pages/ExhibitionPage';
-import SchedulePage from './pages/SchedulePage';
-import AwardsPage from './pages/AwardsPage';
+import CFVPage from './pages/CFVPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -41,22 +36,15 @@ export default function App() {
             {/* OVERVIEW ROUTES */}
             <Route path="/overview/team" element={<TeamPage />} />
             <Route path="/overview/code-of-conduct" element={<CodeOfConductPage />} />
-            <Route path="/overview/venue" element={<VenuePage />} />
-            <Route path="/overview/review-board" element={<ReviewBoardPage />} />
             <Route path="/overview/advisory-board" element={<AdvisoryBoardPage />} />
 
             {/* CONFERENCE ROUTES */}
             <Route path="/conference/sponsors" element={<SponsorsPage />} />
             <Route path="/conference/speakers" element={<SpeakersPage />} />
             <Route path="/conference/call-for-papers" element={<CFPPage />} />
-
-            {/* SCHEDULE ROUTES */}
-            <Route path="/schedule/trainings" element={<TrainingsPage onOpenRegister={handleOpenRegister} />} />
-            <Route path="/schedule/exhibition" element={<ExhibitionPage />} />
-            <Route path="/schedule" element={<SchedulePage />} />
+            <Route path="/conference/call-for-volunteers" element={<CFVPage />} />
 
             {/* DIRECT ROUTES */}
-            <Route path="/awards" element={<AwardsPage />} />
             <Route path="/contact" element={<ContactPage />} />
 
             {/* 404 CATCH-ALL ROUTE */}

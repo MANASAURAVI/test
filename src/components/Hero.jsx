@@ -105,7 +105,7 @@ export default function Hero({ onOpenRegister }) {
               BE PART OF IT <ArrowRightIcon size={18} />
             </button>
 
-            <Link to="/schedule" className="btn-hero-secondary">
+            <Link to="/contact" className="btn-hero-secondary">
               STAY UPDATED <ArrowRightIcon size={18} />
             </Link>
           </div>

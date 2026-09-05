@@ -241,6 +241,26 @@ export const conferenceData = {
     ]
   },
 
+  callForVolunteers: {
+    status: "OPEN",
+    deadline: "FEBRUARY 28, 2027",
+    roles: [
+      "Track & Speaker Management",
+      "Registration & Helpdesk Operations",
+      "Network & AV Technical Support",
+      "Design, Photography & Media Coverage",
+      "Logistics & Venue Coordination",
+      "Emergency Response & Attendee Care"
+    ],
+    perks: [
+      "Exclusive BSides Dharamshala Volunteer T-Shirt & Swag Kit",
+      "Full access to keynotes, talks, and networking sessions",
+      "Certificate of Appreciation & LinkedIn endorsement",
+      "Complimentary meals & refreshments during event days",
+      "Direct networking with security speakers, researchers, and sponsors"
+    ]
+  },
+
   trainings: [
     {
       id: "tr1",

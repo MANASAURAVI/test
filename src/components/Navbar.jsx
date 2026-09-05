@@ -188,12 +188,6 @@ export default function Navbar({ onOpenRegister }) {
               <NavLink to="/overview/code-of-conduct" className="dropdown-link">
                 CODE OF CONDUCT
               </NavLink>
-              <NavLink to="/overview/venue" className="dropdown-link">
-                VENUE
-              </NavLink>
-              <NavLink to="/overview/review-board" className="dropdown-link">
-                REVIEW BOARD
-              </NavLink>
               <NavLink to="/overview/advisory-board" className="dropdown-link">
                 ADVISORY BOARD
               </NavLink>
@@ -219,37 +213,13 @@ export default function Navbar({ onOpenRegister }) {
               <NavLink to="/conference/call-for-papers" className="dropdown-link">
                 CALL FOR PAPERS
               </NavLink>
-            </div>
-          </div>
-
-          {/* 03. SCHEDULE DROPDOWN */}
-          <div
-            className="nav-dropdown-item"
-            onMouseEnter={() => handleMouseEnter('schedule')}
-            onMouseLeave={handleMouseLeave}
-          >
-            <button className={`nav-dropdown-trigger ${location.pathname.startsWith('/schedule') ? 'active' : ''}`}>
-              SCHEDULE <ChevronDownIcon size={14} className="dropdown-arrow" />
-            </button>
-            <div className={`nav-dropdown-menu ${activeDropdown === 'schedule' ? 'show' : ''}`}>
-              <NavLink to="/schedule/trainings" className="dropdown-link">
-                TRAINING
-              </NavLink>
-              <NavLink to="/schedule/exhibition" className="dropdown-link">
-                EXHIBITION
-              </NavLink>
-              <NavLink to="/schedule" end className="dropdown-link">
-                SCHEDULE
+              <NavLink to="/conference/call-for-volunteers" className="dropdown-link">
+                CALL FOR VOLUNTEERS
               </NavLink>
             </div>
           </div>
 
-          {/* 04. AWARDS DIRECT LINK */}
-          <NavLink to="/awards" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-            AWARDS
-          </NavLink>
-
-          {/* 05. CONTACT US DIRECT LINK */}
+          {/* 03. CONTACT US DIRECT LINK */}
           <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
             CONTACT US
           </NavLink>
@@ -302,8 +272,6 @@ export default function Navbar({ onOpenRegister }) {
               <div className="drawer-sublinks">
                 <Link to="/overview/team" onClick={() => setIsMobileMenuOpen(false)}>Team</Link>
                 <Link to="/overview/code-of-conduct" onClick={() => setIsMobileMenuOpen(false)}>Code of Conduct</Link>
-                <Link to="/overview/venue" onClick={() => setIsMobileMenuOpen(false)}>Venue</Link>
-                <Link to="/overview/review-board" onClick={() => setIsMobileMenuOpen(false)}>Review Board</Link>
                 <Link to="/overview/advisory-board" onClick={() => setIsMobileMenuOpen(false)}>Advisory Board</Link>
               </div>
             )}
@@ -323,40 +291,15 @@ export default function Navbar({ onOpenRegister }) {
                 <Link to="/conference/sponsors" onClick={() => setIsMobileMenuOpen(false)}>Sponsors</Link>
                 <Link to="/conference/speakers" onClick={() => setIsMobileMenuOpen(false)}>Speakers</Link>
                 <Link to="/conference/call-for-papers" onClick={() => setIsMobileMenuOpen(false)}>Call for Papers</Link>
+                <Link to="/conference/call-for-volunteers" onClick={() => setIsMobileMenuOpen(false)}>Call for Volunteers</Link>
               </div>
             )}
           </div>
 
-          {/* 03. SCHEDULE ACCORDION */}
-          <div className={`drawer-accordion-section ${activeMobileAccordion === 'schedule' ? 'expanded' : ''}`}>
-            <button
-              className="drawer-accordion-header"
-              onClick={() => toggleMobileAccordion('schedule')}
-            >
-              <span className="drawer-accordion-title">03 // SCHEDULE</span>
-              <ChevronDownIcon size={16} className={`drawer-accordion-icon ${activeMobileAccordion === 'schedule' ? 'open' : ''}`} />
-            </button>
-            {activeMobileAccordion === 'schedule' && (
-              <div className="drawer-sublinks">
-                <Link to="/schedule/trainings" onClick={() => setIsMobileMenuOpen(false)}>Training</Link>
-                <Link to="/schedule/exhibition" onClick={() => setIsMobileMenuOpen(false)}>Exhibition</Link>
-                <Link to="/schedule" onClick={() => setIsMobileMenuOpen(false)}>Full Schedule</Link>
-              </div>
-            )}
-          </div>
-
-          {/* 04. AWARDS DIRECT LINK */}
-          <div className="drawer-accordion-section direct-item">
-            <Link to="/awards" className="drawer-direct-link" onClick={() => setIsMobileMenuOpen(false)}>
-              <span className="drawer-accordion-title">04 // AWARDS</span>
-              <ArrowRightIcon size={16} />
-            </Link>
-          </div>
-
-          {/* 05. CONTACT US DIRECT LINK */}
+          {/* 03. CONTACT US DIRECT LINK */}
           <div className="drawer-accordion-section direct-item">
             <Link to="/contact" className="drawer-direct-link" onClick={() => setIsMobileMenuOpen(false)}>
-              <span className="drawer-accordion-title">05 // CONTACT US</span>
+              <span className="drawer-accordion-title">03 // CONTACT US</span>
               <ArrowRightIcon size={16} />
             </Link>
           </div>

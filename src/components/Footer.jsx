@@ -162,8 +162,6 @@ export default function Footer() {
           <ul className="footer-link-list">
             <li><Link to="/overview/team"><span className="red-chevron">&gt;</span> Team</Link></li>
             <li><Link to="/overview/code-of-conduct"><span className="red-chevron">&gt;</span> Code of Conduct</Link></li>
-            <li><Link to="/overview/venue"><span className="red-chevron">&gt;</span> Venue</Link></li>
-            <li><Link to="/overview/review-board"><span className="red-chevron">&gt;</span> Review Board</Link></li>
             <li><Link to="/overview/advisory-board"><span className="red-chevron">&gt;</span> Advisory Board</Link></li>
           </ul>
         </div>
@@ -186,10 +184,11 @@ export default function Footer() {
             <li><Link to="/conference/sponsors"><span className="red-chevron">&gt;</span> Sponsors</Link></li>
             <li><Link to="/conference/speakers"><span className="red-chevron">&gt;</span> Speakers</Link></li>
             <li><Link to="/conference/call-for-papers"><span className="red-chevron">&gt;</span> Call for Papers</Link></li>
+            <li><Link to="/conference/call-for-volunteers"><span className="red-chevron">&gt;</span> Call for Volunteers</Link></li>
           </ul>
         </div>
 
-        {/* 4. SCHEDULE COLUMN */}
+        {/* 4. DIRECT COLUMN */}
         <div className="footer-nav-col footer-card-box">
           <BoxBorderDraw />
           <span className="card-box-tick tl" />
@@ -200,32 +199,10 @@ export default function Footer() {
           <h4 className="footer-col-header">
             <span className="col-num">03</span>
             <span className="col-slash">//</span>
-            <span className="col-title">SCHEDULE</span>
-          </h4>
-          <div className="col-red-line" />
-          <ul className="footer-link-list">
-            <li><Link to="/schedule/trainings"><span className="red-chevron">&gt;</span> Training</Link></li>
-            <li><Link to="/schedule/exhibition"><span className="red-chevron">&gt;</span> Exhibition</Link></li>
-            <li><Link to="/schedule"><span className="red-chevron">&gt;</span> Full Schedule</Link></li>
-          </ul>
-        </div>
-
-        {/* 5. DIRECT COLUMN */}
-        <div className="footer-nav-col footer-card-box">
-          <BoxBorderDraw />
-          <span className="card-box-tick tl" />
-          <span className="card-box-tick tr" />
-          <span className="card-box-tick bl" />
-          <span className="card-box-tick br" />
-
-          <h4 className="footer-col-header">
-            <span className="col-num">04</span>
-            <span className="col-slash">//</span>
             <span className="col-title">DIRECT</span>
           </h4>
           <div className="col-red-line" />
           <ul className="footer-link-list">
-            <li><Link to="/awards"><span className="red-chevron">&gt;</span> Awards</Link></li>
             <li><Link to="/contact"><span className="red-chevron">&gt;</span> Contact Us</Link></li>
           </ul>
         </div>
