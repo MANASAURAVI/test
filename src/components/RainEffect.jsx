@@ -21,7 +21,6 @@ export default function RainEffect() {
     window.addEventListener('resize', handleResize);
 
     // ── GPU HARDWARE-ACCELERATED DROPLET PRE-RENDERING ──
-    // Create pre-rendered droplet canvas stamps to avoid per-frame gradient allocation
     const stampSizes = [2.0, 3.0, 4.0, 5.0];
     const dropStamps = stampSizes.map((radius) => {
       const stamp = document.createElement('canvas');
@@ -33,7 +32,7 @@ export default function RainEffect() {
       const cx = diameter / 2;
       const cy = diameter / 2;
 
-      // Shadow
+      // Drop Shadow
       sCtx.beginPath();
       sCtx.arc(cx + 1.2, cy + 1.8, radius, 0, Math.PI * 2);
       sCtx.fillStyle = 'rgba(0, 5, 12, 0.35)';
@@ -54,7 +53,7 @@ export default function RainEffect() {
       sCtx.fillStyle = bodyGrad;
       sCtx.fill();
 
-      // Top Highlight
+      // Top Glare
       sCtx.beginPath();
       sCtx.arc(cx - radius * 0.35, cy - radius * 0.35, radius * 0.32, 0, Math.PI * 2);
       sCtx.fillStyle = 'rgba(255, 255, 255, 0.92)';
@@ -82,20 +81,20 @@ export default function RainEffect() {
       return closest;
     };
 
-    // ── 1. BACKGROUND FALLING RAIN (OPTIMIZED STREAKS) ──
-    const bgDropCount = Math.min(Math.floor(width / 5), 180);
+    // ── 1. GENTLE & SOOTHING FALLING RAIN STREAKS ──
+    const bgDropCount = Math.min(Math.floor(width / 6), 140);
     const bgDrops = Array.from({ length: bgDropCount }, () => ({
-      x: Math.random() * (width + 300) - 150,
+      x: Math.random() * (width + 200) - 100,
       y: Math.random() * height,
-      length: Math.random() * 35 + 20,
-      speed: Math.random() * 18 + 14,
-      wind: -(Math.random() * 3 + 1.8),
-      opacity: Math.random() * 0.3 + 0.15,
-      thickness: Math.random() * 1.2 + 0.7,
+      length: Math.random() * 22 + 14,
+      speed: Math.random() * 5 + 6.5, // Slow, peaceful rain fall speed (6.5px - 11.5px/frame)
+      wind: -(Math.random() * 1.2 + 0.6), // Gentle wind tilt
+      opacity: Math.random() * 0.3 + 0.18,
+      thickness: Math.random() * 1.1 + 0.6,
     }));
 
-    // ── 2. GLASS DROPLETS (HARDWARE ACCELERATED SLIDING) ──
-    const maxGlassDrops = Math.min(Math.floor(width / 16), 65);
+    // ── 2. SLOW SLIDING GLASS DROPLETS ──
+    const maxGlassDrops = Math.min(Math.floor(width / 18), 48);
     const glassDrops = [];
     const trailDroplets = [];
 
@@ -107,11 +106,11 @@ export default function RainEffect() {
         y: overrideY !== null ? overrideY : Math.random() * height,
         r: stampData.radius,
         stampData,
-        speedY: Math.random() * 0.6 + 0.2,
-        maxSpeed: Math.random() * 3.2 + 1.8,
-        accel: Math.random() * 0.025 + 0.01,
-        alpha: Math.random() * 0.35 + 0.65,
-        stuckCounter: Math.floor(Math.random() * 30),
+        speedY: Math.random() * 0.15 + 0.08, // Slow initial crawl
+        maxSpeed: Math.random() * 0.6 + 0.8,  // Gentle maximum sliding speed
+        accel: Math.random() * 0.008 + 0.003, // Soft acceleration
+        alpha: Math.random() * 0.35 + 0.6,
+        stuckCounter: Math.floor(Math.random() * 80 + 30), // Longer surface tension pauses
         lastTrailY: 0,
       };
     };
@@ -123,10 +122,10 @@ export default function RainEffect() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // ── RENDER 1: FAST BACKGROUND RAIN (BATCH STROKES) ──
+      // ── RENDER 1: GENTLE BACKGROUND RAIN ──
       ctx.lineCap = 'round';
-      ctx.strokeStyle = 'rgba(215, 238, 255, 0.32)';
-      ctx.lineWidth = 1.1;
+      ctx.strokeStyle = 'rgba(215, 238, 255, 0.3)';
+      ctx.lineWidth = 1.0;
       ctx.beginPath();
 
       bgDrops.forEach((drop) => {
@@ -134,8 +133,8 @@ export default function RainEffect() {
         drop.y += drop.speed;
 
         if (drop.y > height) {
-          drop.y = -drop.length - Math.random() * 40;
-          drop.x = Math.random() * (width + 300) - 150;
+          drop.y = -drop.length - Math.random() * 30;
+          drop.x = Math.random() * (width + 200) - 100;
         }
 
         const endX = drop.x + drop.wind * (drop.length / drop.speed);
@@ -146,10 +145,10 @@ export default function RainEffect() {
       });
       ctx.stroke();
 
-      // ── RENDER 2: TRAIL DROPLETS (GPU STAMP DRAWING) ──
+      // ── RENDER 2: TRAIL DROPLETS (SLOW FADE) ──
       for (let i = trailDroplets.length - 1; i >= 0; i--) {
         const t = trailDroplets[i];
-        t.alpha -= 0.0015;
+        t.alpha -= 0.0006;
         if (t.alpha <= 0) {
           trailDroplets.splice(i, 1);
           continue;
@@ -159,7 +158,7 @@ export default function RainEffect() {
         ctx.drawImage(stamp, t.x - radius - pad, t.y - radius - pad);
       }
 
-      // ── RENDER 3: SLIDING GLASS DROPS (GPU STAMP DRAWING) ──
+      // ── RENDER 3: SLOW SLIDING GLASS DROPS ──
       glassDrops.forEach((drop, idx) => {
         if (drop.stuckCounter > 0) {
           drop.stuckCounter--;
@@ -168,23 +167,23 @@ export default function RainEffect() {
           if (drop.speedY > drop.maxSpeed) drop.speedY = drop.maxSpeed;
           drop.y += drop.speedY;
 
-          if (Math.abs(drop.y - drop.lastTrailY) > drop.r * 3.2) {
+          if (Math.abs(drop.y - drop.lastTrailY) > drop.r * 3.5) {
             drop.lastTrailY = drop.y;
-            if (trailDroplets.length < 160 && Math.random() < 0.75) {
+            if (trailDroplets.length < 140 && Math.random() < 0.65) {
               const trailStamp = getNearestStamp(drop.r * 0.6);
               trailDroplets.push({
-                x: drop.x + (Math.random() * 1.5 - 0.75),
+                x: drop.x + (Math.random() * 1.2 - 0.6),
                 y: drop.y - drop.r * 1.5,
                 r: trailStamp.radius,
                 stampData: trailStamp,
-                alpha: Math.random() * 0.35 + 0.45,
+                alpha: Math.random() * 0.3 + 0.4,
               });
             }
           }
 
-          if (Math.random() < 0.01) {
-            drop.stuckCounter = Math.floor(Math.random() * 25 + 10);
-            drop.speedY = Math.random() * 0.3 + 0.15;
+          if (Math.random() < 0.008) {
+            drop.stuckCounter = Math.floor(Math.random() * 60 + 20);
+            drop.speedY = Math.random() * 0.15 + 0.08;
           }
         }
 

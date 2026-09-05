@@ -22,6 +22,8 @@ export default function Hero({ onOpenRegister }) {
           src="/images/homepage.png"
           alt="Dramatic Himalayan sunset at Dharamshala for BSides Cybersecurity Expedition"
           className="hero-background-img"
+          fetchPriority="high"
+          decoding="async"
         />
 
         {/* Muted Looping Video Smoothly Fading In Over Image */}
@@ -32,6 +34,7 @@ export default function Hero({ onOpenRegister }) {
           loop
           muted
           playsInline
+          preload="auto"
           onLoadedData={() => setIsVideoLoaded(true)}
           onCanPlayThrough={() => setIsVideoLoaded(true)}
           className={`hero-background-video ${isVideoLoaded ? 'video-active' : ''}`}

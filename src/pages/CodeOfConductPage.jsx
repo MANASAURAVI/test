@@ -73,6 +73,8 @@ export default function CodeOfConductPage() {
             src="/images/code_0f_con.png" 
             alt="BSides Dharamshala Code of Conduct Himalayas" 
             className="coc-hero-img" 
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="coc-hero-overlay" />
         </div>
