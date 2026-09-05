@@ -4104,31 +4104,60 @@ img {
   text-shadow: 0 0 8px rgba(255, 22, 56, 0.6);
 }
 
-/* Vertical Scan Line (Disabled) */
-.card-scan-line {
-  display: none !important;
-}
-
-/* Number Badge */
-.card-num-badge {
+/* Technical Status Row */
+.card-sys-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--text-dim);
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 6px;
+  width: 100%;
+  user-select: none;
+  box-sizing: border-box;
 }
 
-@keyframes numFlicker {
-  0% { opacity: 0.1; }
-  25% { opacity: 1; }
-  40% { opacity: 0.3; }
-  60% { opacity: 1; }
-  75% { opacity: 0.6; }
-  100% { opacity: 1; }
+.sys-module-id {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 1px;
+  white-space: nowrap;
 }
 
-.coc-tactical-card:hover .card-num-badge {
+.sys-status-txt {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-dot-hover {
+  display: inline-block;
   color: #FF1638;
-  text-shadow: 0 0 8px rgba(255, 22, 56, 0.6);
+  font-size: 8px;
+  margin-left: 2px;
+}
+
+/* Top Header & Icon Wrap */
+.card-top-header, .space-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.card-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Title & Description */
