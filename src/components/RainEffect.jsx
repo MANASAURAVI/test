@@ -20,126 +20,146 @@ export default function RainEffect() {
 
     window.addEventListener('resize', handleResize);
 
-    // ── 1. HEAVY BACKGROUND FALLING RAIN STREAKS ──
-    const bgDropCount = Math.min(Math.floor(width / 3.2), 360);
+    // ── GPU HARDWARE-ACCELERATED DROPLET PRE-RENDERING ──
+    // Create pre-rendered droplet canvas stamps to avoid per-frame gradient allocation
+    const stampSizes = [2.0, 3.0, 4.0, 5.0];
+    const dropStamps = stampSizes.map((radius) => {
+      const stamp = document.createElement('canvas');
+      const pad = 6;
+      const diameter = Math.ceil((radius + pad) * 2);
+      stamp.width = diameter;
+      stamp.height = diameter;
+      const sCtx = stamp.getContext('2d');
+      const cx = diameter / 2;
+      const cy = diameter / 2;
+
+      // Shadow
+      sCtx.beginPath();
+      sCtx.arc(cx + 1.2, cy + 1.8, radius, 0, Math.PI * 2);
+      sCtx.fillStyle = 'rgba(0, 5, 12, 0.35)';
+      sCtx.fill();
+
+      // Refractive Body
+      const bodyGrad = sCtx.createRadialGradient(
+        cx - radius * 0.3, cy - radius * 0.3, radius * 0.05,
+        cx, cy, radius
+      );
+      bodyGrad.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+      bodyGrad.addColorStop(0.45, 'rgba(180, 220, 255, 0.22)');
+      bodyGrad.addColorStop(0.88, 'rgba(10, 20, 35, 0.55)');
+      bodyGrad.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
+
+      sCtx.beginPath();
+      sCtx.arc(cx, cy, radius, 0, Math.PI * 2);
+      sCtx.fillStyle = bodyGrad;
+      sCtx.fill();
+
+      // Top Highlight
+      sCtx.beginPath();
+      sCtx.arc(cx - radius * 0.35, cy - radius * 0.35, radius * 0.32, 0, Math.PI * 2);
+      sCtx.fillStyle = 'rgba(255, 255, 255, 0.92)';
+      sCtx.fill();
+
+      // Bottom Rim
+      sCtx.beginPath();
+      sCtx.arc(cx + radius * 0.28, cy + radius * 0.28, radius * 0.38, 0, Math.PI * 2);
+      sCtx.fillStyle = 'rgba(220, 245, 255, 0.5)';
+      sCtx.fill();
+
+      return { stamp, radius, pad };
+    });
+
+    const getNearestStamp = (r) => {
+      let closest = dropStamps[0];
+      let minDiff = Math.abs(r - closest.radius);
+      for (let i = 1; i < dropStamps.length; i++) {
+        const diff = Math.abs(r - dropStamps[i].radius);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closest = dropStamps[i];
+        }
+      }
+      return closest;
+    };
+
+    // ── 1. BACKGROUND FALLING RAIN (OPTIMIZED STREAKS) ──
+    const bgDropCount = Math.min(Math.floor(width / 5), 180);
     const bgDrops = Array.from({ length: bgDropCount }, () => ({
-      x: Math.random() * (width + 400) - 200,
+      x: Math.random() * (width + 300) - 150,
       y: Math.random() * height,
-      length: Math.random() * 45 + 30, // Longer heavy rain streaks
-      speed: Math.random() * 22 + 18,  // Faster heavy downpour speed
-      wind: -(Math.random() * 4 + 2.5), // Stronger wind angle
-      opacity: Math.random() * 0.45 + 0.25,
-      thickness: Math.random() * 1.6 + 0.8,
+      length: Math.random() * 35 + 20,
+      speed: Math.random() * 18 + 14,
+      wind: -(Math.random() * 3 + 1.8),
+      opacity: Math.random() * 0.3 + 0.15,
+      thickness: Math.random() * 1.2 + 0.7,
     }));
 
-    // ── 2. HEAVY GLASS DROPLETS (SLIDING ON SCREEN) ──
-    const maxGlassDrops = Math.min(Math.floor(width / 11), 110);
+    // ── 2. GLASS DROPLETS (HARDWARE ACCELERATED SLIDING) ──
+    const maxGlassDrops = Math.min(Math.floor(width / 16), 65);
     const glassDrops = [];
     const trailDroplets = [];
 
     const createGlassDrop = (overrideY = null) => {
-      const radius = Math.random() * 4.2 + 2.8;
+      const targetRadius = Math.random() * 3.2 + 2.0;
+      const stampData = getNearestStamp(targetRadius);
       return {
         x: Math.random() * (width - 40) + 20,
         y: overrideY !== null ? overrideY : Math.random() * height,
-        r: radius,
-        speedY: Math.random() * 0.8 + 0.3,
-        maxSpeed: Math.random() * 4.5 + 2.5, // Faster sliding under heavy gravity
-        accel: Math.random() * 0.035 + 0.015,
-        alpha: Math.random() * 0.35 + 0.6,
-        stuckCounter: Math.floor(Math.random() * 25), // Shorter pauses due to heavy flow
+        r: stampData.radius,
+        stampData,
+        speedY: Math.random() * 0.6 + 0.2,
+        maxSpeed: Math.random() * 3.2 + 1.8,
+        accel: Math.random() * 0.025 + 0.01,
+        alpha: Math.random() * 0.35 + 0.65,
+        stuckCounter: Math.floor(Math.random() * 30),
         lastTrailY: 0,
       };
     };
 
-    // Populate heavy glass droplets
     for (let i = 0; i < maxGlassDrops; i++) {
       glassDrops.push(createGlassDrop());
     }
 
-    // Draw single 3D glass droplet with light refraction & shadow
-    const drawGlassDrop = (x, y, r, alpha) => {
-      ctx.save();
-      ctx.translate(x, y);
-
-      // A. Soft Drop Shadow
-      ctx.beginPath();
-      ctx.arc(1.5, 2.2, r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 5, 15, ${alpha * 0.4})`;
-      ctx.fill();
-
-      // B. Refractive Glass Drop Body
-      const bodyGrad = ctx.createRadialGradient(
-        -r * 0.3, -r * 0.3, r * 0.05,
-        0, 0, r
-      );
-      bodyGrad.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.5})`);
-      bodyGrad.addColorStop(0.45, `rgba(180, 225, 255, ${alpha * 0.25})`);
-      bodyGrad.addColorStop(0.88, `rgba(10, 20, 35, ${alpha * 0.6})`);
-      bodyGrad.addColorStop(1, `rgba(255, 255, 255, ${alpha * 0.35})`);
-
-      ctx.beginPath();
-      ctx.arc(0, 0, r, 0, Math.PI * 2);
-      ctx.fillStyle = bodyGrad;
-      ctx.fill();
-
-      // C. Top-Left Primary Light Reflection
-      ctx.beginPath();
-      ctx.arc(-r * 0.35, -r * 0.35, r * 0.34, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.95})`;
-      ctx.fill();
-
-      // D. Bottom Rim Refraction Rim
-      ctx.beginPath();
-      ctx.arc(r * 0.28, r * 0.28, r * 0.4, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(220, 245, 255, ${alpha * 0.55})`;
-      ctx.fill();
-
-      ctx.restore();
-    };
-
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // ── RENDER 1: HEAVY BACKGROUND RAIN STREAKS ──
+      // ── RENDER 1: FAST BACKGROUND RAIN (BATCH STROKES) ──
       ctx.lineCap = 'round';
+      ctx.strokeStyle = 'rgba(215, 238, 255, 0.32)';
+      ctx.lineWidth = 1.1;
+      ctx.beginPath();
+
       bgDrops.forEach((drop) => {
         drop.x += drop.wind;
         drop.y += drop.speed;
 
         if (drop.y > height) {
-          drop.y = -drop.length - Math.random() * 60;
-          drop.x = Math.random() * (width + 400) - 200;
+          drop.y = -drop.length - Math.random() * 40;
+          drop.x = Math.random() * (width + 300) - 150;
         }
 
         const endX = drop.x + drop.wind * (drop.length / drop.speed);
         const endY = drop.y - drop.length;
 
-        const gradient = ctx.createLinearGradient(drop.x, drop.y, endX, endY);
-        gradient.addColorStop(0, `rgba(225, 245, 255, ${drop.opacity})`);
-        gradient.addColorStop(0.7, `rgba(150, 210, 255, ${drop.opacity * 0.5})`);
-        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-        ctx.beginPath();
         ctx.moveTo(drop.x, drop.y);
         ctx.lineTo(endX, endY);
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = drop.thickness;
-        ctx.stroke();
       });
+      ctx.stroke();
 
-      // ── RENDER 2: TRAIL DROPLETS (MICRO WATER TRAILS) ──
+      // ── RENDER 2: TRAIL DROPLETS (GPU STAMP DRAWING) ──
       for (let i = trailDroplets.length - 1; i >= 0; i--) {
         const t = trailDroplets[i];
-        t.alpha -= 0.0012; // gradual fade
+        t.alpha -= 0.0015;
         if (t.alpha <= 0) {
           trailDroplets.splice(i, 1);
           continue;
         }
-        drawGlassDrop(t.x, t.y, t.r, t.alpha);
+        ctx.globalAlpha = t.alpha;
+        const { stamp, radius, pad } = t.stampData;
+        ctx.drawImage(stamp, t.x - radius - pad, t.y - radius - pad);
       }
 
-      // ── RENDER 3: SLIDING GLASS DROPS ──
+      // ── RENDER 3: SLIDING GLASS DROPS (GPU STAMP DRAWING) ──
       glassDrops.forEach((drop, idx) => {
         if (drop.stuckCounter > 0) {
           drop.stuckCounter--;
@@ -148,39 +168,36 @@ export default function RainEffect() {
           if (drop.speedY > drop.maxSpeed) drop.speedY = drop.maxSpeed;
           drop.y += drop.speedY;
 
-          // Spawn micro trail droplets as water slides down
-          if (Math.abs(drop.y - drop.lastTrailY) > drop.r * 2.8) {
+          if (Math.abs(drop.y - drop.lastTrailY) > drop.r * 3.2) {
             drop.lastTrailY = drop.y;
-            if (trailDroplets.length < 320 && Math.random() < 0.85) {
+            if (trailDroplets.length < 160 && Math.random() < 0.75) {
+              const trailStamp = getNearestStamp(drop.r * 0.6);
               trailDroplets.push({
-                x: drop.x + (Math.random() * 2 - 1),
-                y: drop.y - drop.r * 1.4,
-                r: Math.max(1.1, drop.r * (Math.random() * 0.35 + 0.25)),
-                alpha: Math.random() * 0.4 + 0.4,
+                x: drop.x + (Math.random() * 1.5 - 0.75),
+                y: drop.y - drop.r * 1.5,
+                r: trailStamp.radius,
+                stampData: trailStamp,
+                alpha: Math.random() * 0.35 + 0.45,
               });
             }
           }
 
-          // Brief surface tension pauses
-          if (Math.random() < 0.012) {
-            drop.stuckCounter = Math.floor(Math.random() * 20 + 8);
-            drop.speedY = Math.random() * 0.4 + 0.2;
+          if (Math.random() < 0.01) {
+            drop.stuckCounter = Math.floor(Math.random() * 25 + 10);
+            drop.speedY = Math.random() * 0.3 + 0.15;
           }
         }
 
-        drawGlassDrop(drop.x, drop.y, drop.r, drop.alpha);
+        ctx.globalAlpha = drop.alpha;
+        const { stamp, radius, pad } = drop.stampData;
+        ctx.drawImage(stamp, drop.x - radius - pad, drop.y - radius - pad);
 
-        // Reset drop when sliding past screen bottom
-        if (drop.y > height + 25) {
-          glassDrops[idx] = createGlassDrop(-20);
+        if (drop.y > height + 20) {
+          glassDrops[idx] = createGlassDrop(-15);
         }
       });
 
-      // Maintain heavy rain density
-      if (glassDrops.length < maxGlassDrops && Math.random() < 0.15) {
-        glassDrops.push(createGlassDrop(-20));
-      }
-
+      ctx.globalAlpha = 1.0;
       animationFrameId = requestAnimationFrame(render);
     };
 
@@ -203,6 +220,7 @@ export default function RainEffect() {
         height: '100vh',
         pointerEvents: 'none',
         zIndex: 10,
+        willChange: 'transform',
       }}
     />
   );

@@ -19,8 +19,7 @@ export default function HeroParticles() {
 
     window.addEventListener('resize', handleResize);
 
-    // Particle pool - Pure natural white mist & star ember particles
-    const particleCount = Math.min(Math.floor(width / 35), 45);
+    const particleCount = Math.min(Math.floor(width / 40), 35);
     const particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
@@ -40,7 +39,6 @@ export default function HeroParticles() {
         p.x += p.speedX;
         p.alpha += Math.sin(Date.now() * p.pulseSpeed) * 0.004;
 
-        // Reset particle if off screen
         if (p.y < -10) {
           p.y = height + 10;
           p.x = Math.random() * width;
@@ -51,8 +49,6 @@ export default function HeroParticles() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `${p.color}${Math.max(0.08, Math.min(0.6, p.alpha))})`;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = '#FFFFFF';
         ctx.fill();
       });
 
