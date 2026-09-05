@@ -60,37 +60,7 @@ export default function CodeOfConductPage() {
     }, 150);
   };
 
-  React.useEffect(() => {
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        const top = entry.boundingClientRect.top;
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-revealed');
-          entry.target.classList.remove('is-exited-above');
-        } else {
-          entry.target.classList.remove('is-revealed');
-          if (top < 0) {
-            entry.target.classList.add('is-exited-above');
-          } else {
-            entry.target.classList.remove('is-exited-above');
-          }
-        }
-      });
-    };
 
-    const observerOptions = {
-      threshold: 0.12,
-      rootMargin: '-20px 0px -20px 0px'
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const elements = document.querySelectorAll('.coc-reveal-left, .coc-reveal-right');
-    elements.forEach((el) => observer.observe(el));
-
-    return () => {
-      elements.forEach((el) => observer.unobserve(el));
-    };
-  }, []);
 
   return (
     <div className="coc-page-wrapper">

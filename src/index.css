@@ -3645,62 +3645,31 @@ img {
   box-sizing: border-box;
 }
 
-/* Scroll reveal animation styles (Left & Right) */
+/* Scroll reveal animation styles (Disabled: Static & 100% visible) */
 .coc-reveal-left,
 .coc-reveal-right {
-  opacity: 0;
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.coc-reveal-left {
-  transform: translateX(-65px);
-}
-
-.coc-reveal-right {
-  transform: translateX(65px);
-}
-
-.coc-reveal-left.is-revealed,
-.coc-reveal-right.is-revealed {
-  opacity: 1;
-  transform: translateX(0);
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto !important;
 }
 
 .coc-left-col.coc-reveal-left {
-  opacity: 0;
-  transform: translateX(-80px);
+  opacity: 1 !important;
+  transform: translateX(-20%) !important;
+  transition: none !important;
 }
 
-.coc-left-col.coc-reveal-left.is-revealed {
-  opacity: 1;
-  transform: translateX(-20%);
-}
-
-/* Exited Above (Scrolled past) -> Exit out to Left & Right to clear screen */
-.coc-reveal-left.is-exited-above {
-  opacity: 0;
-  transform: translateX(-110px);
-}
-
+.coc-reveal-left.is-exited-above,
 .coc-reveal-right.is-exited-above {
-  opacity: 0;
-  transform: translateX(110px);
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .coc-left-col.coc-reveal-left.is-exited-above {
-  opacity: 0;
-  transform: translateX(-130px);
+  opacity: 1 !important;
+  transform: translateX(-20%) !important;
 }
-
-.coc-4cards-grid .coc-tactical-card:nth-child(1) { transition-delay: 0.05s; }
-.coc-4cards-grid .coc-tactical-card:nth-child(2) { transition-delay: 0.15s; }
-.coc-4cards-grid .coc-tactical-card:nth-child(3) { transition-delay: 0.25s; }
-.coc-4cards-grid .coc-tactical-card:nth-child(4) { transition-delay: 0.35s; }
-
-.coc-3spaces-grid .coc-tactical-card:nth-child(1) { transition-delay: 0.05s; }
-.coc-3spaces-grid .coc-tactical-card:nth-child(2) { transition-delay: 0.18s; }
-.coc-3spaces-grid .coc-tactical-card:nth-child(3) { transition-delay: 0.3s; }
 
 .coc-hero-bg {
   position: fixed;
@@ -4135,106 +4104,17 @@ img {
   text-shadow: 0 0 8px rgba(255, 22, 56, 0.6);
 }
 
-/* Vertical Scan Line Animation */
+/* Vertical Scan Line (Disabled) */
 .card-scan-line {
-  position: absolute;
-  top: -120%;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 22, 56, 0.85) 50%, transparent 100%);
-  box-shadow: 0 0 10px rgba(255, 22, 56, 0.7);
-  pointer-events: none;
-  opacity: 0;
-  z-index: 5;
+  display: none !important;
 }
 
-.is-revealed .card-scan-line {
-  animation: cardScanReveal 800ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes cardScanReveal {
-  0% {
-    top: -10%;
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    top: 115%;
-    opacity: 0;
-  }
-}
-
-/* Technical Status Row */
-.card-sys-status-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 1.2px;
-  color: rgba(255, 255, 255, 0.28);
-  margin-bottom: 4px;
-  user-select: none;
-}
-
-.sys-status-txt {
-  transition: color 250ms ease;
-}
-
-.status-dot-hover {
-  display: inline-block;
-  color: #FF1638;
-  opacity: 0;
-  font-size: 8px;
-  margin-left: 2px;
-  transition: opacity 250ms ease, text-shadow 250ms ease;
-}
-
-.coc-tactical-card:hover .sys-status-txt {
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.coc-tactical-card:hover .status-dot-hover {
-  opacity: 1;
-  text-shadow: 0 0 6px rgba(255, 22, 56, 0.8);
-}
-
-/* Top Header & Icon Wrap */
-.card-top-header, .space-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-icon-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 250ms ease, filter 250ms ease;
-}
-
-.coc-tactical-card:hover .card-icon-wrap {
-  filter: drop-shadow(0 0 6px rgba(255, 22, 56, 0.6));
-  transform: scale(1.06);
-}
-
-/* Number Badge Flicker & Hover */
+/* Number Badge */
 .card-num-badge {
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 800;
   color: var(--text-dim);
-  transition: color 250ms ease, text-shadow 250ms ease;
-}
-
-.is-revealed .card-num-badge {
-  animation: numFlicker 600ms ease forwards;
 }
 
 @keyframes numFlicker {
