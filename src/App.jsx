@@ -8,9 +8,7 @@ import RegisterModal from './components/RegisterModal';
 import HomePage from './pages/HomePage';
 import TeamPage from './pages/TeamPage';
 import CodeOfConductPage from './pages/CodeOfConductPage';
-import AdvisoryBoardPage from './pages/AdvisoryBoardPage';
 import SponsorsPage from './pages/SponsorsPage';
-import SpeakersPage from './pages/SpeakersPage';
 import CFPPage from './pages/CFPPage';
 import CFVPage from './pages/CFVPage';
 import ContactPage from './pages/ContactPage';
@@ -36,11 +34,9 @@ export default function App() {
             {/* OVERVIEW ROUTES */}
             <Route path="/overview/team" element={<TeamPage />} />
             <Route path="/overview/code-of-conduct" element={<CodeOfConductPage />} />
-            <Route path="/overview/advisory-board" element={<AdvisoryBoardPage />} />
 
             {/* CONFERENCE ROUTES */}
             <Route path="/conference/sponsors" element={<SponsorsPage />} />
-            <Route path="/conference/speakers" element={<SpeakersPage />} />
             <Route path="/conference/call-for-papers" element={<CFPPage />} />
             <Route path="/conference/call-for-volunteers" element={<CFVPage />} />
 

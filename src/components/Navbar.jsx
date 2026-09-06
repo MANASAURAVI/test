@@ -188,9 +188,6 @@ export default function Navbar({ onOpenRegister }) {
               <NavLink to="/overview/code-of-conduct" className="dropdown-link">
                 CODE OF CONDUCT
               </NavLink>
-              <NavLink to="/overview/advisory-board" className="dropdown-link">
-                ADVISORY BOARD
-              </NavLink>
             </div>
           </div>
 
@@ -206,9 +203,6 @@ export default function Navbar({ onOpenRegister }) {
             <div className={`nav-dropdown-menu ${activeDropdown === 'conference' ? 'show' : ''}`}>
               <NavLink to="/conference/sponsors" className="dropdown-link">
                 SPONSORS
-              </NavLink>
-              <NavLink to="/conference/speakers" className="dropdown-link">
-                SPEAKERS
               </NavLink>
               <NavLink to="/conference/call-for-papers" className="dropdown-link">
                 CALL FOR PAPERS
@@ -272,7 +266,6 @@ export default function Navbar({ onOpenRegister }) {
               <div className="drawer-sublinks">
                 <Link to="/overview/team" onClick={() => setIsMobileMenuOpen(false)}>Team</Link>
                 <Link to="/overview/code-of-conduct" onClick={() => setIsMobileMenuOpen(false)}>Code of Conduct</Link>
-                <Link to="/overview/advisory-board" onClick={() => setIsMobileMenuOpen(false)}>Advisory Board</Link>
               </div>
             )}
           </div>
@@ -289,7 +282,6 @@ export default function Navbar({ onOpenRegister }) {
             {activeMobileAccordion === 'conference' && (
               <div className="drawer-sublinks">
                 <Link to="/conference/sponsors" onClick={() => setIsMobileMenuOpen(false)}>Sponsors</Link>
-                <Link to="/conference/speakers" onClick={() => setIsMobileMenuOpen(false)}>Speakers</Link>
                 <Link to="/conference/call-for-papers" onClick={() => setIsMobileMenuOpen(false)}>Call for Papers</Link>
                 <Link to="/conference/call-for-volunteers" onClick={() => setIsMobileMenuOpen(false)}>Call for Volunteers</Link>
               </div>

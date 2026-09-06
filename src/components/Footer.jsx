@@ -162,7 +162,6 @@ export default function Footer() {
           <ul className="footer-link-list">
             <li><Link to="/overview/team"><span className="red-chevron">&gt;</span> Team</Link></li>
             <li><Link to="/overview/code-of-conduct"><span className="red-chevron">&gt;</span> Code of Conduct</Link></li>
-            <li><Link to="/overview/advisory-board"><span className="red-chevron">&gt;</span> Advisory Board</Link></li>
           </ul>
         </div>
 
@@ -182,7 +181,6 @@ export default function Footer() {
           <div className="col-red-line" />
           <ul className="footer-link-list">
             <li><Link to="/conference/sponsors"><span className="red-chevron">&gt;</span> Sponsors</Link></li>
-            <li><Link to="/conference/speakers"><span className="red-chevron">&gt;</span> Speakers</Link></li>
             <li><Link to="/conference/call-for-papers"><span className="red-chevron">&gt;</span> Call for Papers</Link></li>
             <li><Link to="/conference/call-for-volunteers"><span className="red-chevron">&gt;</span> Call for Volunteers</Link></li>
           </ul>
