@@ -86,9 +86,8 @@ export default function CFPPage() {
           
           <div className="contact-header-panel cfp-contact-theme-panel">
             <span className="contact-script-badge">&gt; ./cfp_submission.sh --active</span>
-            <h1 className="contact-top-main-title">
-              <span className="title-white">CALL FOR</span>{' '}
-              <span className="title-red">PAPERS</span>
+            <h1 className="cfp-hero-main-title">
+              CALL FOR <span className="title-brush text-highlight-red minimal-brush-highlight">PAPERS</span>
             </h1>
             <div className="cfp-hero-event-name" style={{ color: '#FF1638', marginTop: '4px', marginBottom: '12px' }}>
               {callForPapers.event}

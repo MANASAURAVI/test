@@ -310,7 +310,9 @@ export default function SubscribeSection() {
               <InteractiveMailBoxScene isHovered={isHovered} isSending={isSending} movieScene={movieScene} />
             </div>
 
-            <h3 className="about-sub-card-title">Stay in the Loop</h3>
+            <h3 className="about-sub-card-title cfp-hero-main-title" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', textTransform: 'uppercase' }}>
+              STAY IN THE <span className="title-brush text-highlight-red minimal-brush-highlight">LOOP</span>
+            </h3>
 
             <p className="about-sub-card-desc">
               Subscribe for updates on BSides Dharamshala 2027: dates, speakers, tickets, and everything else, straight to your inbox.

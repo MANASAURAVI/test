@@ -1,5 +1,4 @@
 import React from 'react';
-import PageHero from '../components/PageHero';
 import { conferenceData } from '../data/conferenceData';
 
 function SocialXIcon({ size = 16 }) {
@@ -34,7 +33,6 @@ export default function CFVPage() {
   return (
     <div className="internal-page-view cfv-page-view">
       {/* ── FIXED BACKGROUND SYSTEM ── */}
-      {/* Base Fixed Image: ops.webp for ALL sections across the entire page */}
       <div className="cfv-page-bg-fixed">
         <img 
           src="/images/ops.webp" 
@@ -46,7 +44,6 @@ export default function CFVPage() {
         <div className="cfv-base-overlay" />
       </div>
 
-      {/* First Top Image: Volunteer.webp for top hero section */}
       <div className="cfv-hero-top-bg">
         <img 
           src="/images/Volunteer.webp" 
@@ -58,21 +55,22 @@ export default function CFVPage() {
         <div className="cfv-top-overlay" />
       </div>
 
-      <div className="contact-hero-wrap" style={{ padding: '140px 0 40px' }}>
-        <div className="section-container contact-hero-container">
+      {/* ── HERO BANNER WITH FROSTED GLASS PANEL (FIRST FULL PAGE VIEWPORT) ── */}
+      <div className="coc-hero-wrap">
+        <div className="section-container coc-hero-container">
           <div className="contact-header-panel">
             <span className="contact-script-badge">&gt; ./ops_crew.sh --active</span>
-            <h1 className="contact-top-main-title">
-              <span className="title-white">OPS</span>{' '}
-              <span className="title-red">CREW</span>
+            <h1 className="contact-top-main-title cfp-hero-main-title">
+              OPS <span className="title-brush text-highlight-red minimal-brush-highlight">CREW</span>
             </h1>
-            <p className="contact-header-sub">
+            <p className="contact-header-sub cfp-hero-lead-desc">
               BSides Dharamshala belongs to the community, and the OPS CREW is a huge part of what makes that community special.
             </p>
           </div>
         </div>
       </div>
 
+      {/* ── MAIN CONTENT SECTIONS DOWNWARD ── */}
       <section className="section-block cfv-main-section">
         <div className="section-container">
 
@@ -207,4 +205,3 @@ export default function CFVPage() {
     </div>
   );
 }
-

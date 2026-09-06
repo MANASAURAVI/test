@@ -54,8 +54,8 @@ export default function CodeOfConductPage() {
         <div className="section-container coc-hero-container">
           <div className="contact-header-panel coc-center-top-header">
             <span className="contact-script-badge">&gt; ./event_guidelines.sh</span>
-            <h1 className="contact-top-main-title">
-              <span className="title-white">CODE OF</span> <span className="title-red">CONDUCT</span>
+            <h1 className="cfp-hero-main-title">
+              CODE OF <span className="title-brush text-highlight-red minimal-brush-highlight">CONDUCT</span>
             </h1>
             <p className="contact-header-sub" style={{ marginTop: '8px', maxWidth: '600px' }}>
               Guidelines to ensure a safe, welcoming, and inclusive environment for everyone.
