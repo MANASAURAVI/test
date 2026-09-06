@@ -226,6 +226,8 @@ export default function RainEffect() {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
+  }, []);
+
   if (useStaticFallback) return null;
 
   return (

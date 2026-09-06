@@ -6,7 +6,7 @@ import {
   TerminalIcon,
   MapPinIcon
 } from '../components/Icons';
-import SnowEffect from '../components/SnowEffect';
+import RainEffect from '../components/RainEffect';
 
 function AlertOctagonIcon({ size = 20, color = 'currentColor', strokeWidth = 2 }) {
   return (
@@ -36,7 +36,7 @@ const BoxBorderDraw = () => (
 export default function CodeOfConductPage() {
   return (
     <div className="coc-page-wrapper">
-      <SnowEffect />
+      <RainEffect />
       
       {/* ── HERO HEADER WITH BACKGROUND IMAGE ── */}
       <div className="coc-hero-wrap">
