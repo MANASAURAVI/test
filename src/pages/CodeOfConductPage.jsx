@@ -27,6 +27,12 @@ function MailIcon({ size = 20, color = 'currentColor', strokeWidth = 2 }) {
   );
 }
 
+const BoxBorderDraw = () => (
+  <svg className="box-draw-svg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }} preserveAspectRatio="none" aria-hidden="true">
+    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="10" fill="none" stroke="#FF1638" strokeWidth="1.5" pathLength="100" />
+  </svg>
+);
+
 export default function CodeOfConductPage() {
   return (
     <div className="coc-page-wrapper">
@@ -48,6 +54,12 @@ export default function CodeOfConductPage() {
         <div className="section-container coc-hero-container">
           {/* Centered Top Heading Panel */}
           <div className="coc-center-top-header">
+            <BoxBorderDraw />
+            <span className="hud-tick tl" />
+            <span className="hud-tick tr" />
+            <span className="hud-tick bl" />
+            <span className="hud-tick br" />
+
             <span className="coc-script-badge">&gt; ./event_guidelines.sh</span>
             <h1 className="coc-top-main-title">
               <span className="title-white">CODE OF</span> <span className="title-red">CONDUCT</span>
@@ -73,6 +85,11 @@ export default function CodeOfConductPage() {
             {/* 3 Key Pillars */}
             <div className="coc-pillars-grid">
               <div className="coc-pillar-item">
+                <BoxBorderDraw />
+                <span className="hud-tick tl" />
+                <span className="hud-tick tr" />
+                <span className="hud-tick bl" />
+                <span className="hud-tick br" />
                 <div className="coc-pillar-icon">
                   <UsersIcon size={20} color="#FF1638" />
                 </div>
@@ -83,6 +100,11 @@ export default function CodeOfConductPage() {
               </div>
 
               <div className="coc-pillar-item">
+                <BoxBorderDraw />
+                <span className="hud-tick tl" />
+                <span className="hud-tick tr" />
+                <span className="hud-tick bl" />
+                <span className="hud-tick br" />
                 <div className="coc-pillar-icon">
                   <ShieldCheckIcon size={20} color="#FF1638" />
                 </div>
@@ -93,6 +115,11 @@ export default function CodeOfConductPage() {
               </div>
 
               <div className="coc-pillar-item">
+                <BoxBorderDraw />
+                <span className="hud-tick tl" />
+                <span className="hud-tick tr" />
+                <span className="hud-tick bl" />
+                <span className="hud-tick br" />
                 <div className="coc-pillar-icon">
                   <AlertOctagonIcon size={20} color="#FF1638" />
                 </div>
@@ -109,7 +136,12 @@ export default function CodeOfConductPage() {
             <div className="coc-policy-container">
               
               {/* Section 01 */}
-              <div className="coc-policy-section">
+              <div className="coc-policy-card">
+                <BoxBorderDraw />
+                <span className="hud-tick tl" />
+                <span className="hud-tick tr" />
+                <span className="hud-tick bl" />
+                <span className="hud-tick br" />
                 <div className="coc-policy-header">
                   <span className="coc-section-num">01</span>
                   <div className="coc-section-title-wrap">
@@ -123,7 +155,12 @@ export default function CodeOfConductPage() {
               </div>
 
               {/* Section 02 */}
-              <div className="coc-policy-section">
+              <div className="coc-policy-card">
+                <BoxBorderDraw />
+                <span className="hud-tick tl" />
+                <span className="hud-tick tr" />
+                <span className="hud-tick bl" />
+                <span className="hud-tick br" />
                 <div className="coc-policy-header">
                   <span className="coc-section-num">02</span>
                   <div className="coc-section-title-wrap">
@@ -137,7 +174,12 @@ export default function CodeOfConductPage() {
               </div>
 
               {/* Section 03 */}
-              <div className="coc-policy-section">
+              <div className="coc-policy-card">
+                <BoxBorderDraw />
+                <span className="hud-tick tl" />
+                <span className="hud-tick tr" />
+                <span className="hud-tick bl" />
+                <span className="hud-tick br" />
                 <div className="coc-policy-header">
                   <span className="coc-section-num">03</span>
                   <div className="coc-section-title-wrap">
@@ -148,20 +190,6 @@ export default function CodeOfConductPage() {
                 <p className="coc-right-text">
                   Participants violating these rules may be sanctioned or expelled from the conference without a refund, and barred from future BSides Dharamshala events at the discretion of the organizers. If you experience or observe harassment, or have concerns, please contact conference staff immediately.
                 </p>
-              </div>
-
-              {/* Contact & Reporting Banner */}
-              <div className="coc-report-banner">
-                <div className="coc-report-left">
-                  <MailIcon size={20} color="#FF1638" />
-                  <div>
-                    <span className="coc-report-label">Need assistance or report an incident?</span>
-                    <a href="mailto:info@bsidesdharamshala.org" className="coc-report-email">info@bsidesdharamshala.org</a>
-                  </div>
-                </div>
-                <a href="mailto:info@bsidesdharamshala.org" className="coc-report-btn">
-                  Report Incident
-                </a>
               </div>
 
             </div>

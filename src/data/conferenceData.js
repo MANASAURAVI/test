@@ -223,41 +223,283 @@ export const conferenceData = {
   ],
 
   callForPapers: {
-    status: "OPEN",
-    deadline: "MARCH 01, 2027",
+    title: "CALL FOR PAPERS",
+    tagline: "Submit your work to",
+    event: "BSides Dharamshala 2027",
+    status: "CLOSED",
+    statusText: "CFP is currently closed",
+    description: "BSides Dharamshala is a community-driven information security conference bringing together security researchers, practitioners, developers, students, and curious minds to share knowledge, research, and real-world experiences.",
+    about: {
+      paragraphs: [
+        "BSides Dharamshala invites security researchers, practitioners, developers, students, educators, and industry professionals to submit original, technical, experience-driven, and community-focused talks.",
+        "Our goal is to create a space where people can share practical knowledge, new research, lessons from the field, failures, discoveries, tools, and ideas that move the security community forward.",
+        "We welcome both experienced speakers and first-time presenters. You do not need to be a well-known researcher or industry veteran to contribute. If you have something valuable to teach, demonstrate, or discuss, we want to hear from you."
+      ],
+      callout: "Whether you have discovered an interesting vulnerability, built a security tool, investigated an incident, conducted original research, learned something the hard way, or explored an emerging attack surface — submit it."
+    },
     tracks: [
-      "Offensive Security & Red Teaming",
-      "Defensive Architecture & Cloud Security",
-      "Reverse Engineering & Malware Analysis",
-      "AI & Machine Learning Risk Mitigation",
-      "Hardware Hacking & IoT/Embedded Security",
-      "Privacy, Cryptography & Open Source"
+      {
+        title: "Main Technical Track",
+        desc: "Deep technical sessions covering real-world vulnerabilities, attack techniques, security research, exploitation, defenses, and practical lessons."
+      },
+      {
+        title: "Offensive Security & Red Teaming",
+        desc: "Penetration testing, red teaming, adversary simulation, exploitation techniques, attack chains, OPSEC, and offensive tooling."
+      },
+      {
+        title: "Bug Bounty & Vulnerability Research",
+        desc: "Bug hunting methodologies, vulnerability discovery, novel exploitation techniques, automation, research workflows, and responsible disclosure experiences."
+      },
+      {
+        title: "Web, API & Application Security",
+        desc: "Web applications, APIs, authentication, authorization, business logic, mobile applications, application architectures, and secure-by-design practices."
+      },
+      {
+        title: "Cloud & Infrastructure Security",
+        desc: "Cloud environments, containers, Kubernetes, identity and access management, network security, infrastructure attacks, and cloud-native defense."
+      },
+      {
+        title: "Blue Team, Detection & Incident Response",
+        desc: "SOC operations, detection engineering, threat hunting, digital forensics, incident response, security monitoring, and defensive engineering."
+      },
+      {
+        title: "Malware & Threat Research",
+        desc: "Malware analysis, reverse engineering, threat intelligence, intrusion analysis, attack campaigns, and emerging threats."
+      },
+      {
+        title: "Hardware, IoT & Embedded Security",
+        desc: "IoT devices, embedded systems, firmware analysis, hardware attacks, automotive security, radio security, and physical attack surfaces."
+      },
+      {
+        title: "AI & Emerging Security",
+        desc: "AI/ML security, LLM security, AI-assisted attacks and defense, prompt injection, agent security, model abuse, and security challenges created by emerging technologies."
+      },
+      {
+        title: "Secure Engineering & DevSecOps",
+        desc: "Secure software development, security architecture, DevSecOps, CI/CD security, supply-chain security, secure coding, and building resilient systems."
+      },
+      {
+        title: "Workshops & Hands-on Sessions",
+        desc: "Interactive sessions where participants learn through practical exercises, demonstrations, labs, or controlled environments."
+      },
+      {
+        title: "Community, Career & Security Culture",
+        desc: "Security career journeys, education, research methodology, community building, mentorship, learning paths, and experiences that help strengthen the wider security community."
+      }
     ],
-    submissionRequirements: [
-      "Abstract (maximum 300 words) describing the technical core of your presentation.",
-      "Detailed outline including technical prerequisites and key takeaways.",
-      "Speaker biography and past presentation links (if applicable).",
-      "State whether your submission is a 45-min talk, 20-min lightning talk, or 3-hour hands-on workshop."
-    ]
+    topics: [
+      {
+        title: "Web & API Security",
+        desc: "Vulnerability research, business logic flaws, OAuth/JWT bypasses, GraphQL/REST API security, authentication, and secure web application frameworks."
+      },
+      {
+        title: "Cloud, Container & Kubernetes Security",
+        desc: "Cloud misconfigurations, IAM privilege escalation, container escapes, K8s cluster security, serverless risks, and multi-cloud defenses."
+      },
+      {
+        title: "Mobile Security — Android & iOS",
+        desc: "Application reverse engineering, IPC exploitation, binary protections, runtime manipulation (Frida/Objection), and mobile OS security models."
+      },
+      {
+        title: "IoT, Embedded & Hardware Security",
+        desc: "Hardware hacking, JTAG/UART debugging, firmware analysis, side-channel attacks, radio/SDR security, and physical attack surfaces."
+      },
+      {
+        title: "Network & Infrastructure Security",
+        desc: "Core protocol vulnerabilities, perimeter defense, active directory domain attacks, VPN/edge device exploitation, and network architecture security."
+      },
+      {
+        title: "Red Teaming & Adversary Simulation",
+        desc: "Advanced attack chains, C2 infrastructure, EDR evasion, OPSEC strategies, initial access vectors, and real-world adversary emulation."
+      },
+      {
+        title: "Penetration Testing & Exploitation",
+        desc: "Practical offensive methodologies, zero-day research, privilege escalation techniques, exploit development, and weaponization."
+      },
+      {
+        title: "Bug Bounty & Vulnerability Research",
+        desc: "Unique bug hunting workflows, novel vulnerability patterns, disclosure experiences, automated scanning tools, and bug bounty methodologies."
+      },
+      {
+        title: "Blue Teaming & Detection Engineering",
+        desc: "SIEM/XDR rule creation, threat hunting frameworks, Sigma/YARA rules, behavioral detection, and defensive engineering."
+      },
+      {
+        title: "Incident Response & Digital Forensics",
+        desc: "Compromise investigations, root cause analysis, memory forensics, artifact extraction, crisis management, and post-breach remediation."
+      },
+      {
+        title: "Threat Intelligence & Malware Research",
+        desc: "APT campaign analysis, ransomware breakdown, indicator extraction (IOCs), C2 telemetry, and threat actor profiling."
+      },
+      {
+        title: "Reverse Engineering",
+        desc: "Binary decompilation, disassembly analysis, obfuscation bypassing, packer unpacking, and deep protocol dissection."
+      },
+      {
+        title: "Identity & Access Management",
+        desc: "Zero Trust architectures, PAM, SAML/SSO vulnerabilities, directory service security, and identity governance challenges."
+      },
+      {
+        title: "DevSecOps & Software Supply Chain Security",
+        desc: "CI/CD pipeline security, dependency risk management, SAST/DAST integration, SBOM enforcement, and secure coding practices."
+      },
+      {
+        title: "AI, ML & LLM Security",
+        desc: "Prompt injection, model inversion, agent security, training data poisoning, AI-assisted attack vectors, and LLM defensive guardrails."
+      },
+      {
+        title: "Privacy & Data Protection",
+        desc: "Data anonymization, cryptographic privacy protocols, regulatory technical compliance (GDPR), and user data protection systems."
+      },
+      {
+        title: "Web3, Blockchain & Smart Contract Security",
+        desc: "Smart contract auditing, reentrancy/logic exploits, DeFi protocol security, bridge attacks, and cryptographic vulnerabilities."
+      },
+      {
+        title: "Automotive & OT/ICS Security",
+        desc: "CAN bus hacking, SCADA/ICS network defense, industrial control safety, critical infrastructure protection, and embedded vehicular security."
+      },
+      {
+        title: "Security Automation & Tooling",
+        desc: "Open-source security tools, custom script automation, workflow orchestration, and scalable scanning infrastructure."
+      },
+      {
+        title: "Emerging Attack Surfaces & Novel Research",
+        desc: "Experimental security domains, cross-disciplinary research, unconventional vectors, and novel security discoveries."
+      }
+    ],
+    topicsNote: "This list is not exhaustive. Original, unconventional, cross-disciplinary, and experimental submissions are strongly encouraged.",
+    strongSubmissions: [
+      {
+        title: "Original Research",
+        desc: "New techniques, findings, vulnerabilities, attack methods, defensive approaches, or security research."
+      },
+      {
+        title: "Real-World Experience",
+        desc: "Lessons learned from incidents, assessments, bug bounty programs, security operations, engineering, or research."
+      },
+      {
+        title: "Technical Depth",
+        desc: "Practical demonstrations, technical walkthroughs, methodology, tooling, and meaningful technical detail."
+      },
+      {
+        title: "Actionable Knowledge",
+        desc: "Things attendees can take back to their teams, projects, labs, or research."
+      },
+      {
+        title: "Honest Failures & Lessons Learned",
+        desc: "Security does not always go according to plan. We welcome responsible discussions about failed approaches, unexpected results, and what you learned from them."
+      }
+    ],
+    reviewAndSelection: {
+      process: {
+        title: "Review Process",
+        text: "Each submission will be evaluated by the BSides Dharamshala CFP/review team.",
+        factorsLabel: "Submissions may be assessed on factors including:",
+        factors: [
+          "Originality and novelty",
+          "Technical depth",
+          "Practical relevance",
+          "Clarity of the proposal",
+          "Educational value",
+          "Relevance to the security community",
+          "Quality and feasibility of the proposed session"
+        ],
+        footer: "We welcome submissions from both experienced speakers and people presenting at a security conference for the first time."
+      },
+      fairness: {
+        title: "Independence & Fairness",
+        text: "The CFP process is designed to evaluate proposals based on the quality and value of the submitted content.",
+        subtext: "Speaker popularity, employer, job title, social-media following, or organisational affiliation should not be the deciding factor in whether a proposal is valuable to the community."
+      }
+    },
+    codeOfConduct: [
+      "All speakers and participants must comply with the BSides Dharamshala Code of Conduct.",
+      "We do not accept talks whose primary purpose is harassment, discrimination, intimidation, or promoting harmful or unethical behaviour.",
+      "Security research involving vulnerabilities, systems, or third-party infrastructure must be conducted responsibly and within appropriate legal and ethical boundaries.",
+      "Where applicable, researchers should follow responsible/coordinated vulnerability disclosure practices and avoid exposing sensitive information that could unnecessarily put users, organisations, or infrastructure at risk."
+    ],
+    speakerResponsibilities: [
+      "Present content that is substantially their own work or clearly identify external material.",
+      "Provide accurate information and avoid intentionally misleading claims.",
+      "Respect applicable laws, disclosure requirements, and ethical boundaries.",
+      "Avoid turning educational sessions into sales pitches or promotional presentations.",
+      "Notify the organisers as early as possible about significant changes to the proposed talk.",
+      "Obtain appropriate permission before presenting confidential, proprietary, or sensitive information.",
+      "Ensure demonstrations do not unnecessarily expose real users, credentials, personal information, or production systems."
+    ],
+    whatWeDontWant: [
+      "Pure product or company marketing",
+      "Sales pitches disguised as technical talks",
+      "Content with little or no educational value",
+      "Talks based primarily on publicly available material without meaningful original contribution",
+      "Unauthorized exploitation of real-world systems",
+      "Research that exposes sensitive information without appropriate disclosure",
+      "Content that violates the BSides Dharamshala Code of Conduct"
+    ],
+    firstTimeSpeakers: {
+      title: "First-Time Speakers Welcome",
+      subtitle: "Never spoken at a conference before? That's okay.",
+      text: "BSides Dharamshala is interested in ideas and experiences — not just speaker résumés.",
+      callout: "If you have something technically interesting, useful, or thought-provoking to share, submit your proposal."
+    },
+    submitProposal: {
+      title: "Submit Your Proposal",
+      status: "CFP is currently closed",
+      subtext: "Follow our social channels or subscribe to updates for the next Call for Papers.",
+      calloutHeading: "Have something worth sharing with the community?",
+      callout: "We want to hear it."
+    }
   },
 
   callForVolunteers: {
-    status: "OPEN",
-    deadline: "FEBRUARY 28, 2027",
+    title: "OPS CREW",
+    status: "CLOSED",
+    statusText: "Volunteer applications are currently closed",
+    nextCallText: "Follow our social channels or subscribe to updates for the next call for volunteers.",
+    thankYou: {
+      heading: "Thank You, OPS CREW.",
+      paragraphs: [
+        "BSides Dharamshala 2026 happened because of you. Every badge handed over, every session ushered in, every question answered, every problem solved quietly before anyone noticed it existed — that was you. The OPS CREW.",
+        "Dharamshala came alive with security researchers, hackers, developers, students, and curious minds coming together to learn, share, and connect. None of that energy would have been possible without the people working behind the scenes. You gave your time, your energy, and your weekends to make something meaningful for the community.",
+        "On behalf of every speaker, every attendee, and every organiser: thank you.",
+        "BSides Dharamshala belongs to the community, and the OPS CREW is a huge part of what makes that community special. We are incredibly proud of everything you helped make happen, and we cannot wait to build the next chapter with you."
+      ]
+    },
     roles: [
-      "Track & Speaker Management",
-      "Registration & Helpdesk Operations",
-      "Network & AV Technical Support",
-      "Design, Photography & Media Coverage",
-      "Logistics & Venue Coordination",
-      "Emergency Response & Attendee Care"
-    ],
-    perks: [
-      "Exclusive BSides Dharamshala Volunteer T-Shirt & Swag Kit",
-      "Full access to keynotes, talks, and networking sessions",
-      "Certificate of Appreciation & LinkedIn endorsement",
-      "Complimentary meals & refreshments during event days",
-      "Direct networking with security speakers, researchers, and sponsors"
+      {
+        title: "Registration Desk",
+        desc: "The first faces our attendees met. You welcomed everyone, handled registrations, and set the tone for the entire event."
+      },
+      {
+        title: "Exhibition Support",
+        desc: "You kept the exhibition area organised, welcoming, and running smoothly while helping exhibitors and attendees connect."
+      },
+      {
+        title: "Stage Host",
+        desc: "You kept sessions on schedule, speakers comfortable, and the energy in the room alive."
+      },
+      {
+        title: "Control Room",
+        desc: "The nerve centre of BSides Dharamshala. You coordinated the moving parts behind the scenes and made sure nothing slipped through the cracks."
+      },
+      {
+        title: "Event Runners",
+        desc: "Always moving, always ready. You delivered what was needed, where it was needed, before anyone had to ask."
+      },
+      {
+        title: "Party & Networking",
+        desc: "You helped create an open, welcoming environment where attendees could relax, meet new people, and build connections beyond the sessions."
+      },
+      {
+        title: "Photography & Media",
+        desc: "You captured the people, moments, ideas, and energy that made BSides Dharamshala memorable long after the event ended."
+      },
+      {
+        title: "Hygiene & Facilities",
+        desc: "You helped keep the venue clean, comfortable, accessible, and ready for the community throughout the event."
+      }
     ]
   },
 
