@@ -159,7 +159,7 @@ export default function ContactPage() {
           <div className="contact-header-panel">
             <span className="contact-script-badge">&gt; ./connect_node.sh --encrypted</span>
             <h1 className="cfp-hero-main-title">
-              GET IN TOUCH WITH <span className="title-brush text-highlight-red minimal-brush-highlight">BSIDES DHARAMSHALA</span>
+              GET IN TOUCH WITH BSIDES <span className="title-brush text-highlight-red minimal-brush-highlight">DHARAMSHALA</span>
             </h1>
             <p className="contact-header-sub">
               Have questions about attending, presenting, sponsoring, or volunteering? Connect directly with our team.
