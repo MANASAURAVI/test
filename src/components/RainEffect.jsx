@@ -1,9 +1,29 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export default function RainEffect() {
   const canvasRef = useRef(null);
+  const [useStaticFallback, setUseStaticFallback] = useState(false);
 
   useEffect(() => {
+    const isSlowConnection = 
+      navigator.connection && 
+      (navigator.connection.effectiveType === '2g' || 
+       navigator.connection.effectiveType === 'slow-2g' || 
+       navigator.connection.saveData === true);
+
+    const prefersReducedMotion = 
+      window.matchMedia && 
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const isLowPowerDevice = 
+      navigator.hardwareConcurrency && 
+      navigator.hardwareConcurrency <= 2;
+
+    if (isSlowConnection || prefersReducedMotion || isLowPowerDevice) {
+      setUseStaticFallback(true);
+      return;
+    }
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -18,7 +38,7 @@ export default function RainEffect() {
       height = canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
     // ── GPU HARDWARE-ACCELERATED DROPLET PRE-RENDERING ──
     const stampSizes = [2.0, 3.0, 4.0, 5.0];
@@ -206,7 +226,7 @@ export default function RainEffect() {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  if (useStaticFallback) return null;
 
   return (
     <canvas

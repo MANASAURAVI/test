@@ -17,7 +17,7 @@ export default function HeroParticles() {
       height = canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
     const particleCount = Math.min(Math.floor(width / 40), 35);
     const particles = Array.from({ length: particleCount }, () => ({

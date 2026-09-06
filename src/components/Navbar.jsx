@@ -75,6 +75,7 @@ export default function Navbar({ onOpenRegister }) {
   useEffect(() => {
     const HIDE_ZONE = 80; // px from top to trigger show
     const HIDE_DELAY = 2500; // ms before auto-hide
+    let mouseRaf = null;
 
     const scheduleHide = () => {
       clearTimeout(hideTimerRef.current);
@@ -84,13 +85,16 @@ export default function Navbar({ onOpenRegister }) {
     };
 
     const handleMouseMove = (e) => {
-      if (!isDesktop()) return;
-      if (e.clientY <= HIDE_ZONE) {
-        // Cursor near top — show immediately
-        clearTimeout(hideTimerRef.current);
-        setNavVisible(true);
-        scheduleHide();
-      }
+      if (!isDesktop() || mouseRaf) return;
+      mouseRaf = requestAnimationFrame(() => {
+        if (e.clientY <= HIDE_ZONE) {
+          // Cursor near top — show immediately
+          clearTimeout(hideTimerRef.current);
+          setNavVisible(true);
+          scheduleHide();
+        }
+        mouseRaf = null;
+      });
     };
 
     const handleMouseLeaveDoc = () => {
@@ -101,11 +105,12 @@ export default function Navbar({ onOpenRegister }) {
     // Start hide timer on mount
     if (isDesktop()) scheduleHide();
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeaveDoc);
+    document.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeaveDoc, { passive: true });
 
     return () => {
       clearTimeout(hideTimerRef.current);
+      if (mouseRaf) cancelAnimationFrame(mouseRaf);
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeaveDoc);
     };

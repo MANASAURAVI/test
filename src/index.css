@@ -264,6 +264,60 @@ img {
   flex-grow: 1;
 }
 
+/* GPU Hardware Acceleration & Smooth 60fps Performance */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.team-core-card,
+.team-ops-card,
+.team-bts-card,
+.sponsor-card,
+.ctf-cat-card,
+.site-3d-button,
+.anime-3d-button,
+.btn-hero-primary,
+.btn-hero-secondary {
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Route Loader Spinner */
+.route-loader-viewport {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.route-loader-spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid rgba(255, 22, 56, 0.2);
+  border-top-color: #FF1638;
+  border-radius: 50%;
+  animation: routeSpinner 0.7s linear infinite;
+}
+
+.route-loader-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #FF1638;
+  letter-spacing: 2px;
+}
+
+@keyframes routeSpinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .section-container {
   max-width: 1440px;
   margin: 0 auto;

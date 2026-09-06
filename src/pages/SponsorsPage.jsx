@@ -153,28 +153,37 @@ export default function SponsorsPage() {
     }
   }, [isProspectusModalOpen]);
 
+  const cardRafRef = useRef(null);
+
   // AnimeJS Magnetic 3D Tilt for Interactive Cards
   const handleCardMouseMove = (e) => {
     const card = e.currentTarget;
-    if (!card) return;
+    if (!card || cardRafRef.current) return;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
     const rotateX = (-y / (rect.height / 2)) * 6;
     const rotateY = (x / (rect.width / 2)) * 6;
 
-    animate(card, {
-      rotateX: rotateX,
-      rotateY: rotateY,
-      scale: 1.02,
-      duration: 150,
-      ease: 'outQuad'
+    cardRafRef.current = requestAnimationFrame(() => {
+      animate(card, {
+        rotateX: rotateX,
+        rotateY: rotateY,
+        scale: 1.02,
+        duration: 150,
+        ease: 'outQuad'
+      });
+      cardRafRef.current = null;
     });
   };
 
   const handleCardMouseLeave = (e) => {
     const card = e.currentTarget;
     if (!card) return;
+    if (cardRafRef.current) {
+      cancelAnimationFrame(cardRafRef.current);
+      cardRafRef.current = null;
+    }
     animate(card, {
       rotateX: 0,
       rotateY: 0,

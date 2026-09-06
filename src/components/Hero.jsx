@@ -34,7 +34,7 @@ export default function Hero({ onOpenRegister }) {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           onLoadedData={() => setIsVideoLoaded(true)}
           onCanPlayThrough={() => setIsVideoLoaded(true)}
           className={`hero-background-video ${isVideoLoaded ? 'video-active' : ''}`}

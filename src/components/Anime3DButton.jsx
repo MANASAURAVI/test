@@ -13,38 +13,48 @@ export default function Anime3DButton({
 }) {
   const btnRef = useRef(null);
   const animRef = useRef(null);
+  const rafRef = useRef(null);
 
   const handleMouseEnter = () => {
     if (!btnRef.current) return;
     if (animRef.current) animRef.current.pause();
     animRef.current = animate(btnRef.current, {
-      scale: 1.04,
-      translateY: -3,
-      duration: 300,
+      scale: 1.03,
+      translateY: -2,
+      duration: 250,
       ease: 'outQuad'
     });
   };
 
   const handleMouseMove = (e) => {
     if (!btnRef.current) return;
+    if (rafRef.current) return;
+
     const rect = btnRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    const rotateX = (-y / (rect.height / 2)) * 10;
-    const rotateY = (x / (rect.width / 2)) * 10;
+    const rotateX = (-y / (rect.height / 2)) * 8;
+    const rotateY = (x / (rect.width / 2)) * 8;
 
-    if (animRef.current) animRef.current.pause();
-    animRef.current = animate(btnRef.current, {
-      rotateX: rotateX,
-      rotateY: rotateY,
-      translateZ: 12,
-      duration: 150,
-      ease: 'outQuad'
+    rafRef.current = requestAnimationFrame(() => {
+      if (animRef.current) animRef.current.pause();
+      animRef.current = animate(btnRef.current, {
+        rotateX: rotateX,
+        rotateY: rotateY,
+        translateZ: 8,
+        duration: 120,
+        ease: 'outQuad'
+      });
+      rafRef.current = null;
     });
   };
 
   const handleMouseLeave = () => {
     if (!btnRef.current) return;
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
     if (animRef.current) animRef.current.pause();
     animRef.current = animate(btnRef.current, {
       scale: 1,
@@ -52,8 +62,8 @@ export default function Anime3DButton({
       rotateY: 0,
       translateY: 0,
       translateZ: 0,
-      duration: 500,
-      ease: 'outElastic(1, 0.6)'
+      duration: 400,
+      ease: 'outBack'
     });
   };
 
@@ -66,7 +76,7 @@ export default function Anime3DButton({
       rotateX: 0,
       rotateY: 0,
       translateZ: 0,
-      duration: 120,
+      duration: 100,
       ease: 'outQuad'
     });
   };
@@ -75,9 +85,9 @@ export default function Anime3DButton({
     if (!btnRef.current) return;
     if (animRef.current) animRef.current.pause();
     animRef.current = animate(btnRef.current, {
-      scale: 1.04,
-      translateY: -3,
-      duration: 350,
+      scale: 1.03,
+      translateY: -2,
+      duration: 250,
       ease: 'outBack'
     });
   };
