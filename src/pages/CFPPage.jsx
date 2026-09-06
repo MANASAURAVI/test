@@ -84,33 +84,21 @@ export default function CFPPage() {
 
         <div className="section-container cfp-hero-container">
           
-          <div className="cfp-hero-center-box">
-            
-
-
-            {/* Tagline Badge */}
-            <div className="cfp-tagline-badge">
-              <span className="cfv-tag-dot" />
-              <span>{callForPapers.tagline.toUpperCase()}</span>
-            </div>
-
-            {/* Main Centered Heading */}
-            <h1 className="cfp-hero-main-title">
-              CALL FOR <span className="title-brush text-highlight-red minimal-brush-highlight">PAPERS</span>
+          <div className="contact-header-panel cfp-contact-theme-panel">
+            <span className="contact-script-badge">&gt; ./cfp_submission.sh --active</span>
+            <h1 className="contact-top-main-title">
+              <span className="title-white">CALL FOR</span>{' '}
+              <span className="title-red">PAPERS</span>
             </h1>
-
-            {/* Event Name */}
-            <div className="cfp-hero-event-name">
+            <div className="cfp-hero-event-name" style={{ color: '#FF1638', marginTop: '4px', marginBottom: '12px' }}>
               {callForPapers.event}
             </div>
-
-            {/* Description Paragraph */}
-            <p className="cfp-hero-lead-desc">
+            <p className="contact-header-sub">
               {callForPapers.description}
             </p>
 
             {/* Status Pill & Action Buttons */}
-            <div className="cfp-hero-actions-wrap">
+            <div className="cfp-hero-actions-wrap" style={{ marginTop: '20px' }}>
               <span className="cfv-status-pill closed">
                 <span className="pulse-dot" /> {callForPapers.submitProposal.status.toUpperCase()}
               </span>
@@ -142,7 +130,6 @@ export default function CFPPage() {
                 </Anime3DButton>
               </div>
             </div>
-
           </div>
         </div>
       </section>

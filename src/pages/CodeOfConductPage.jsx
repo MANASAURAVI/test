@@ -52,18 +52,14 @@ export default function CodeOfConductPage() {
         </div>
 
         <div className="section-container coc-hero-container">
-          {/* Centered Top Heading Panel */}
-          <div className="coc-center-top-header">
-            <BoxBorderDraw />
-            <span className="hud-tick tl" />
-            <span className="hud-tick tr" />
-            <span className="hud-tick bl" />
-            <span className="hud-tick br" />
-
-            <span className="coc-script-badge">&gt; ./event_guidelines.sh</span>
-            <h1 className="coc-top-main-title">
+          <div className="contact-header-panel coc-center-top-header">
+            <span className="contact-script-badge">&gt; ./event_guidelines.sh</span>
+            <h1 className="contact-top-main-title">
               <span className="title-white">CODE OF</span> <span className="title-red">CONDUCT</span>
             </h1>
+            <p className="contact-header-sub" style={{ marginTop: '8px', maxWidth: '600px' }}>
+              Guidelines to ensure a safe, welcoming, and inclusive environment for everyone.
+            </p>
           </div>
         </div>
       </div>

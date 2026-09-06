@@ -58,15 +58,20 @@ export default function CFVPage() {
         <div className="cfv-top-overlay" />
       </div>
 
-      <PageHero
-        title={
-          <span className="minimal-heading-wrap">
-            OPS <span className="title-brush text-highlight-red minimal-brush-highlight">CREW</span>
-          </span>
-        }
-        subtitle="BSides Dharamshala belongs to the community, and the OPS CREW is a huge part of what makes that community special."
-        centered
-      />
+      <div className="contact-hero-wrap" style={{ padding: '140px 0 40px' }}>
+        <div className="section-container contact-hero-container">
+          <div className="contact-header-panel">
+            <span className="contact-script-badge">&gt; ./ops_crew.sh --active</span>
+            <h1 className="contact-top-main-title">
+              <span className="title-white">OPS</span>{' '}
+              <span className="title-red">CREW</span>
+            </h1>
+            <p className="contact-header-sub">
+              BSides Dharamshala belongs to the community, and the OPS CREW is a huge part of what makes that community special.
+            </p>
+          </div>
+        </div>
+      </div>
 
       <section className="section-block cfv-main-section">
         <div className="section-container">
