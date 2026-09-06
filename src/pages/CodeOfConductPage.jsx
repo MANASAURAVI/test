@@ -42,7 +42,7 @@ export default function CodeOfConductPage() {
       <div className="coc-hero-wrap">
         <div className="coc-hero-bg">
           <img 
-            src="/images/code_0f_con.png" 
+            src="/images/code_0f_con.webp" 
             alt="BSides Dharamshala Code of Conduct Himalayas" 
             className="coc-hero-img" 
             fetchPriority="high"

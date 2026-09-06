@@ -19,7 +19,7 @@ export default function Hero({ onOpenRegister }) {
       <div className="hero-bg-wrapper">
         {/* Initial High-Res Himalayan Image */}
         <img
-          src="/images/homepage.png"
+          src="/images/homepage.webp"
           alt="Dramatic Himalayan sunset at Dharamshala for BSides Cybersecurity Expedition"
           className="hero-background-img"
           fetchPriority="high"

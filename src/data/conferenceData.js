@@ -29,7 +29,7 @@ export const conferenceData = {
       role: "Lead Organizer",
       category: "Organizers",
       bio: "Cybersecurity researcher and community advocate with 10+ years experience in vulnerability research.",
-      img: "/images/img1.png"
+      img: "/images/img1.webp"
     },
     {
       id: "t2",
@@ -37,7 +37,7 @@ export const conferenceData = {
       role: "Operations & Logistics Lead",
       category: "Operations",
       bio: "Event manager specialized in high-altitude technical summits and open-source tech communities.",
-      img: "/images/img2.png"
+      img: "/images/img2.webp"
     },
     {
       id: "t3",
@@ -45,7 +45,7 @@ export const conferenceData = {
       role: "Technical Program Chair",
       category: "Security",
       bio: "Red teamer and exploit researcher dedicated to promoting technical depth in Indian infosec.",
-      img: "/images/img3.png"
+      img: "/images/img3.webp"
     },
     {
       id: "t4",
@@ -53,7 +53,7 @@ export const conferenceData = {
       role: "Community Outreach",
       category: "Community",
       bio: "Advocate for diversity in cybersecurity and mentor for student security researchers.",
-      img: "/images/img4.png"
+      img: "/images/img4.webp"
     }
   ],
 
@@ -124,7 +124,7 @@ export const conferenceData = {
       role: "Review Board Member",
       expertise: "Cryptography & Hardware Security",
       affiliation: "Institute of Information Security",
-      img: "/images/img1.png"
+      img: "/images/img1.webp"
     },
     {
       id: "rb2",
@@ -132,7 +132,7 @@ export const conferenceData = {
       role: "Review Board Member",
       expertise: "Cloud Native & Microservices Defense",
       affiliation: "Cloud Security Alliance",
-      img: "/images/img2.png"
+      img: "/images/img2.webp"
     },
     {
       id: "rb3",
@@ -140,7 +140,7 @@ export const conferenceData = {
       role: "Review Board Member",
       expertise: "Kernel Exploitation & Reverse Engineering",
       affiliation: "Kernel Labs",
-      img: "/images/img3.png"
+      img: "/images/img3.webp"
     }
   ],
 
@@ -150,14 +150,14 @@ export const conferenceData = {
       name: "Sanjay Dutta",
       role: "Advisory Board Member",
       focus: "Global Infosec Strategy & Governance",
-      img: "/images/img4.png"
+      img: "/images/img4.webp"
     },
     {
       id: "ab2",
       name: "Pooja Malhotra",
       role: "Advisory Board Member",
       focus: "Community Leadership & Academic Alliances",
-      img: "/images/img5.png"
+      img: "/images/img5.webp"
     }
   ],
 
@@ -188,7 +188,7 @@ export const conferenceData = {
       topic: "The Art of Social Engineering & Physical Access Exploitation",
       category: "OFFENSIVE SECURITY",
       bio: "Deconstructing modern red team campaigns combining OSINT, physical perimeter bypasses, and specialized hardware implants.",
-      img: "/images/img1.png"
+      img: "/images/img1.webp"
     },
     {
       id: "sp2",
@@ -198,7 +198,7 @@ export const conferenceData = {
       topic: "Zero Trust Architecture in Multi-Cloud Environments",
       category: "CLOUD SECURITY",
       bio: "Architecting resilient IAM policies, cross-cloud workload identity federation, and automated real-time compliance enforcement.",
-      img: "/images/img2.png"
+      img: "/images/img2.webp"
     },
     {
       id: "sp3",
@@ -208,7 +208,7 @@ export const conferenceData = {
       topic: "Kernel Memory Exploitation & Mitigation Bypass",
       category: "REVERSE ENGINEERING",
       bio: "Deep dive into 64-bit Linux kernel memory corruption primitives, heap feng-shui tactics, and bypassing modern security mitigations.",
-      img: "/images/img3.png"
+      img: "/images/img3.webp"
     },
     {
       id: "sp4",
@@ -218,7 +218,7 @@ export const conferenceData = {
       topic: "Securing LLMs Against Prompt Injection & Poisoning",
       category: "AI & SAFETY",
       bio: "Evaluating systemic risks in LLM integrations, indirect prompt injection attack vectors, and practical defensive guardrails.",
-      img: "/images/img4.png"
+      img: "/images/img4.webp"
     }
   ],
 

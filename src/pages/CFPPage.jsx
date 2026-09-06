@@ -69,7 +69,7 @@ export default function CFPPage() {
       {/* Unified Base Fixed Background for CALL FOR PAPERS Page */}
       <div className="cfp-fixed-bg-wrap">
         <img
-          src="/images/call.png"
+          src="/images/call.webp"
           alt="BSides Dharamshala Call For Papers Background"
           className="cfp-fixed-bg-img"
           fetchPriority="high"

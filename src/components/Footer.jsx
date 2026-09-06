@@ -54,7 +54,7 @@ export default function Footer() {
       {/* Background Mountain Image & Darkness Overlay */}
       <div className="footer-bg-wrap">
         <img
-          src="/images/footerimage.png"
+          src="/images/footerimage.webp"
           alt=""
           className="footer-bg-img"
           aria-hidden="true"

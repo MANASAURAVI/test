@@ -144,7 +144,7 @@ export default function ContactPage() {
       {/* ── FULL PAGE HIMALAYAN BACKGROUND IMAGE ── */}
       <div className="contact-page-bg">
         <img 
-          src="/images/img8.png" 
+          src="/images/img8.webp" 
           alt="BSides Dharamshala Contact Node" 
           className="contact-bg-img" 
           fetchPriority="high"

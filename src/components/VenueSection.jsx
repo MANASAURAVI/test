@@ -26,7 +26,7 @@ export default function VenueSection() {
         <div className="venue-editorial-card">
           <div className="venue-card-bg">
             <img
-              src="/images/homepage.png"
+              src="/images/homepage.webp"
               alt="Dharamshala Mountain Landscape"
               className="venue-bg-image"
             />

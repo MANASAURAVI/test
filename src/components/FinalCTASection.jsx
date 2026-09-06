@@ -5,7 +5,7 @@ export default function FinalCTASection({ onOpenRegister }) {
   return (
     <section className="final-cta-section">
       <div className="final-cta-bg">
-        <img src="/images/homepage.png" alt="Himalayan Sunset Backdrop" className="final-bg-img" />
+        <img src="/images/homepage.webp" alt="Himalayan Sunset Backdrop" className="final-bg-img" />
         <div className="final-overlay-gradient" />
       </div>
 

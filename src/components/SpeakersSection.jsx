@@ -9,7 +9,7 @@ export default function SpeakersSection() {
       company: 'Apex Cyber Solutions',
       topic: 'The Art of Social Engineering & Physical Access Exploitation',
       desc: 'Deconstructing modern red team campaigns combining OSINT, physical perimeter bypasses, and specialized hardware implants in high-security facilities.',
-      img: '/images/img1.png',
+      img: '/images/img1.webp',
       tag: 'OFFENSIVE SECURITY'
     },
     {
@@ -19,7 +19,7 @@ export default function SpeakersSection() {
       company: 'CloudGuard Systems',
       topic: 'Zero Trust Architecture in Multi-Cloud Environments',
       desc: 'Architecting resilient IAM policies, cross-cloud workload identity federation, and automated real-time compliance enforcement across AWS and GCP.',
-      img: '/images/img2.png',
+      img: '/images/img2.webp',
       tag: 'CLOUD SECURITY'
     },
     {
@@ -29,7 +29,7 @@ export default function SpeakersSection() {
       company: 'Vulnerability Labs',
       topic: 'Kernel Memory Exploitation & modern Mitigation Bypass',
       desc: 'Deep dive into 64-bit Linux kernel memory corruption primitives, heap feng-shui tactics, and bypassing modern security mitigations.',
-      img: '/images/img3.png',
+      img: '/images/img3.webp',
       tag: 'REVERSE ENGINEERING'
     },
     {
@@ -39,7 +39,7 @@ export default function SpeakersSection() {
       company: 'Neural Defenses',
       topic: 'Securing LLMs Against Prompt Injection & Data Poisoning',
       desc: 'Evaluating systemic risks in LLM integrations, indirect prompt injection attack vectors, and practical defensive guardrails for enterprise AI apps.',
-      img: '/images/img4.png',
+      img: '/images/img4.webp',
       tag: 'AI & SAFETY'
     }
   ];

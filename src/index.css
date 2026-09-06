@@ -1168,7 +1168,7 @@ img {
   justify-content: center;
   align-items: center;
   background-color: #050709;
-  background-image: url('/images/img7.png');
+  background-image: url('/images/img7.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -5461,7 +5461,7 @@ img {
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
-    background-image: linear-gradient(180deg, rgba(15, 22, 32, 0.35) 0%, rgba(7, 10, 13, 0.65) 100%), url('/images/img5.png');
+    background-image: linear-gradient(180deg, rgba(15, 22, 32, 0.35) 0%, rgba(7, 10, 13, 0.65) 100%), url('/images/img5.webp');
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
@@ -7939,7 +7939,7 @@ img {
   padding: 80px 24px;
   box-sizing: border-box;
   background-color: #050709;
-  background-image: url('/images/img4.png');
+  background-image: url('/images/img4.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

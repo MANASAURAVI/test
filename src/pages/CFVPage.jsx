@@ -34,10 +34,10 @@ export default function CFVPage() {
   return (
     <div className="internal-page-view cfv-page-view">
       {/* ── FIXED BACKGROUND SYSTEM ── */}
-      {/* Base Fixed Image: ops.png for ALL sections across the entire page */}
+      {/* Base Fixed Image: ops.webp for ALL sections across the entire page */}
       <div className="cfv-page-bg-fixed">
         <img 
-          src="/images/ops.png" 
+          src="/images/ops.webp" 
           alt="BSides Dharamshala OPS Crew Backdrop" 
           className="cfv-base-img" 
           fetchPriority="high"
@@ -46,10 +46,10 @@ export default function CFVPage() {
         <div className="cfv-base-overlay" />
       </div>
 
-      {/* First Top Image: Volunteer.png for top hero section */}
+      {/* First Top Image: Volunteer.webp for top hero section */}
       <div className="cfv-hero-top-bg">
         <img 
-          src="/images/Volunteer.png" 
+          src="/images/Volunteer.webp" 
           alt="BSides Dharamshala Volunteer Hero Backdrop" 
           className="cfv-top-img" 
           fetchPriority="high"
