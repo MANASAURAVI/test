@@ -140,6 +140,11 @@ export default function RainEffect() {
     }
 
     const render = () => {
+      if (document.documentElement.getAttribute('data-matrix-mode') === 'active') {
+        ctx.clearRect(0, 0, width, height);
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
       ctx.clearRect(0, 0, width, height);
 
       // ── RENDER 1: GENTLE BACKGROUND RAIN ──

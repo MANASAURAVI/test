@@ -7,7 +7,7 @@ export default function EventInfoBar() {
       {/* COLUMN 1: DATE */}
       <div className="info-column">
         <div className="info-icon-box">
-          <CalendarIcon size={22} color="#FF1638" strokeWidth={1.75} />
+          <CalendarIcon size={22} color="var(--accent-red)" strokeWidth={1.75} />
         </div>
         <div className="info-details">
           <span className="info-label">DATE</span>
@@ -19,7 +19,7 @@ export default function EventInfoBar() {
       {/* COLUMN 2: LOCATION */}
       <div className="info-column">
         <div className="info-icon-box">
-          <MapPinIcon size={22} color="#FF1638" strokeWidth={1.75} />
+          <MapPinIcon size={22} color="var(--accent-red)" strokeWidth={1.75} />
         </div>
         <div className="info-details">
           <span className="info-label">LOCATION</span>
@@ -31,7 +31,7 @@ export default function EventInfoBar() {
       {/* COLUMN 3: COMMUNITY */}
       <div className="info-column">
         <div className="info-icon-box">
-          <UsersIcon size={22} color="#FF1638" strokeWidth={1.75} />
+          <UsersIcon size={22} color="var(--accent-red)" strokeWidth={1.75} />
         </div>
         <div className="info-details">
           <span className="info-label">COMMUNITY</span>
@@ -43,7 +43,7 @@ export default function EventInfoBar() {
       {/* COLUMN 4: ACCESS */}
       <div className="info-column">
         <div className="info-icon-box">
-          <ShieldIcon size={22} color="#FF1638" strokeWidth={1.75} />
+          <ShieldIcon size={22} color="var(--accent-red)" strokeWidth={1.75} />
         </div>
         <div className="info-details">
           <span className="info-label">ACCESS</span>

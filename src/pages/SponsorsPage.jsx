@@ -68,7 +68,7 @@ function SparklesIcon({ size = 18 }) {
 
 const BoxBorderDraw = ({ rx = "8" }) => (
   <svg className="box-draw-svg" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
-    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx={rx} fill="none" stroke="#FF1638" strokeWidth="1.5" pathLength="100" />
+    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx={rx} fill="none" stroke="var(--accent-red)" strokeWidth="1.5" pathLength="100" />
   </svg>
 );
 
@@ -348,7 +348,7 @@ export default function SponsorsPage() {
             <h1 className="cfp-hero-main-title">
               CONFERENCE <span className="title-brush text-highlight-red minimal-brush-highlight">SPONSORS & PARTNERS</span>
             </h1>
-            <div className="cfp-hero-event-name" style={{ color: '#FF1638', marginTop: '4px', marginBottom: '12px' }}>
+            <div className="cfp-hero-event-name" style={{ color: 'var(--accent-red)', marginTop: '4px', marginBottom: '12px' }}>
               BSIDES DHARAMSHALA 2027 // SPONSORSHIP PORTAL
             </div>
             <p className="contact-header-sub">
@@ -581,7 +581,7 @@ export default function SponsorsPage() {
 
               <div className="direct-email-card-glass">
                 <div className="email-card-icon">
-                  <MailIcon size={22} color="#FF1638" />
+                  <MailIcon size={22} color="var(--accent-red)" />
                 </div>
                 <div className="email-card-details">
                   <span className="email-label">DIRECT SPONSORSHIP DESK</span>
@@ -599,7 +599,7 @@ export default function SponsorsPage() {
               </div>
 
               <div className="inquiry-reassurance-box">
-                <ShieldCheckIcon size={18} color="#FF1638" />
+                <ShieldCheckIcon size={18} color="var(--accent-red)" />
                 <span>Fast 24-hour response time from our organizing team. Custom tailored packages available.</span>
               </div>
             </div>

@@ -8,11 +8,64 @@ export default function Navbar({ onOpenRegister }) {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeMobileAccordion, setActiveMobileAccordion] = useState('overview');
   const [navVisible, setNavVisible] = useState(true);
+  const [isLockedHidden, setIsLockedHidden] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const hideTimerRef = useRef(null);
   const lastScrollYRef = useRef(0);
+  const comboActiveRef = useRef(false);
   const isDesktop = () => window.matchMedia('(min-width: 901px)').matches;
+
+  // Global key listener for Shift + A + S shortcut toggle
+  useEffect(() => {
+    const keysPressed = new Set();
+
+    const handleKeyDown = (e) => {
+      const activeTag = document.activeElement ? document.activeElement.tagName.toUpperCase() : '';
+      if (activeTag === 'INPUT' || activeTag === 'TEXTAREA' || document.activeElement.isContentEditable) {
+        return;
+      }
+
+      keysPressed.add(e.key.toLowerCase());
+
+      const hasShift = e.shiftKey || keysPressed.has('shift');
+      const hasA = keysPressed.has('a');
+      const hasS = keysPressed.has('s');
+
+      if (hasShift && hasA && hasS) {
+        if (!comboActiveRef.current) {
+          comboActiveRef.current = true;
+          setIsLockedHidden((prev) => {
+            const nextState = !prev;
+            if (nextState) {
+              setIsMobileMenuOpen(false);
+              setNavVisible(false);
+            } else {
+              setNavVisible(true);
+            }
+            return nextState;
+          });
+        }
+      }
+    };
+
+    const handleKeyUp = (e) => {
+      keysPressed.delete(e.key.toLowerCase());
+      const hasShift = e.shiftKey || keysPressed.has('shift');
+      const hasA = keysPressed.has('a');
+      const hasS = keysPressed.has('s');
+      if (!hasShift || !hasA || !hasS) {
+        comboActiveRef.current = false;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
 
   const handleAboutClick = (e) => {
     e.preventDefault();
@@ -45,6 +98,7 @@ export default function Navbar({ onOpenRegister }) {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (isLockedHidden) return;
       const currentScrollY = window.scrollY;
       setScrolled(currentScrollY > 30);
 
@@ -69,10 +123,11 @@ export default function Navbar({ onOpenRegister }) {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobileMenuOpen]);
+  }, [isMobileMenuOpen, isLockedHidden]);
 
   // Auto-hide navbar on desktop only
   useEffect(() => {
+    if (isLockedHidden) return;
     const HIDE_ZONE = 80; // px from top to trigger show
     const HIDE_DELAY = 2500; // ms before auto-hide
     let mouseRaf = null;
@@ -80,12 +135,14 @@ export default function Navbar({ onOpenRegister }) {
     const scheduleHide = () => {
       clearTimeout(hideTimerRef.current);
       hideTimerRef.current = setTimeout(() => {
-        setNavVisible(false);
+        if (!isLockedHidden) {
+          setNavVisible(false);
+        }
       }, HIDE_DELAY);
     };
 
     const handleMouseMove = (e) => {
-      if (!isDesktop() || mouseRaf) return;
+      if (isLockedHidden || !isDesktop() || mouseRaf) return;
       mouseRaf = requestAnimationFrame(() => {
         if (e.clientY <= HIDE_ZONE) {
           // Cursor near top — show immediately
@@ -98,12 +155,12 @@ export default function Navbar({ onOpenRegister }) {
     };
 
     const handleMouseLeaveDoc = () => {
-      if (!isDesktop()) return;
+      if (isLockedHidden || !isDesktop()) return;
       scheduleHide();
     };
 
     // Start hide timer on mount
-    if (isDesktop()) scheduleHide();
+    if (isDesktop() && !isLockedHidden) scheduleHide();
 
     document.addEventListener('mousemove', handleMouseMove, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeaveDoc, { passive: true });
@@ -114,7 +171,7 @@ export default function Navbar({ onOpenRegister }) {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeaveDoc);
     };
-  }, []);
+  }, [isLockedHidden]);
 
 
 
@@ -153,15 +210,16 @@ export default function Navbar({ onOpenRegister }) {
   };
 
   return (
-    <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''} ${!navVisible ? 'navbar-hidden' : ''}`}>
+    <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''} ${(!navVisible || isLockedHidden) ? 'navbar-hidden' : ''}`}>
       <div className="nav-container">
-        {/* LOGO */}
+        {/* LOGO IN LEFT CORNER */}
         <Link to="/" onClick={handleLogoClick} className="nav-logo-link" aria-label="BSides Dharamshala Homepage">
           <img
             src="/logo/logo.png"
             alt="BSides Dharamshala Logo"
             className="nav-logo-img"
           />
+          <span className="matrix-nav-prompt">&gt; root@bsides:~#</span>
         </Link>
 
         {/* DESKTOP NAVIGATION WITH DROPDOWNS */}

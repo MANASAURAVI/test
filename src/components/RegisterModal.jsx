@@ -61,7 +61,7 @@ export default function RegisterModal({ isOpen, onClose }) {
         {submitted ? (
           <div className="modal-success-state">
             <div className="success-icon-ring">
-              <ShieldCheckIcon size={40} color="#FF1638" />
+              <ShieldCheckIcon size={40} color="var(--accent-red)" />
             </div>
             <h3 className="success-title">REGISTRATION CONFIRMED</h3>
             <p className="success-desc">

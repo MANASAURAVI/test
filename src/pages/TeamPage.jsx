@@ -42,7 +42,7 @@ function UsersIcon({ size = 18 }) {
 
 const BoxBorderDraw = ({ rx = "12" }) => (
   <svg className="box-draw-svg" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
-    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx={rx} fill="none" stroke="#FF1638" strokeWidth="1.5" pathLength="100" />
+    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx={rx} fill="none" stroke="var(--accent-red)" strokeWidth="1.5" pathLength="100" />
   </svg>
 );
 
@@ -258,7 +258,7 @@ export default function TeamPage() {
               THE PEOPLE<br />
               <span className="title-brush text-highlight-red minimal-brush-highlight">BEHIND THE SIGNAL</span>
             </h1>
-            <div className="cfp-hero-event-name" style={{ color: '#FF1638', marginTop: '6px', marginBottom: '10px' }}>
+            <div className="cfp-hero-event-name" style={{ color: 'var(--accent-red)', marginTop: '6px', marginBottom: '10px' }}>
               BSIDES DHARAMSHALA CREW // OPEN SECURITY KNOWLEDGE
             </div>
             <p className="contact-header-sub" style={{ marginBottom: '18px', maxWidth: '680px', marginLeft: 'auto', marginRight: 'auto' }}>

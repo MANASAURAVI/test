@@ -19,7 +19,7 @@ export default function AwardsPage() {
       <section className="section-block">
         <div className="section-container">
           <div className="awards-intro-banner">
-            <TrophyIcon size={36} color="#FF1638" />
+            <TrophyIcon size={36} color="var(--accent-red)" />
             <h2 className="awards-banner-title">RECOGNIZING THE PEOPLE WHO MOVE THE COMMUNITY FORWARD</h2>
             <p className="awards-banner-sub">
               Presented at the closing ceremony of BSides Dharamshala 2027 in Himachal Pradesh.

@@ -4,19 +4,19 @@ function MountainReticleIcon() {
   return (
     <svg className="tech-loader-svg" viewBox="0 0 100 100" fill="none">
       {/* Outer Rotating Radar Dashed Ring */}
-      <circle cx="50" cy="50" r="46" stroke="rgba(255, 22, 56, 0.4)" strokeWidth="1" strokeDasharray="6 4" className="spin-clockwise" />
+      <circle cx="50" cy="50" r="46" stroke="rgba(var(--accent-rgb), 0.4)" strokeWidth="1" strokeDasharray="6 4" className="spin-clockwise" />
       {/* Inner Counter-Rotating Ring */}
       <circle cx="50" cy="50" r="36" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="1.5" strokeDasharray="18 12" className="spin-counter" />
       
       {/* Crosshair Lines */}
-      <line x1="50" y1="0" x2="50" y2="100" stroke="rgba(255, 22, 56, 0.25)" strokeWidth="1" />
-      <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(255, 22, 56, 0.25)" strokeWidth="1" />
+      <line x1="50" y1="0" x2="50" y2="100" stroke="rgba(var(--accent-rgb), 0.25)" strokeWidth="1" />
+      <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(var(--accent-rgb), 0.25)" strokeWidth="1" />
       
       {/* Target Reticle Corners */}
-      <circle cx="50" cy="50" r="24" stroke="#FF1638" strokeWidth="2" strokeDasharray="90 10" />
+      <circle cx="50" cy="50" r="24" stroke="var(--accent-red)" strokeWidth="2" strokeDasharray="90 10" />
       
       {/* Mountain Peak Center Icon */}
-      <path d="M50 32 L62 56 L38 56 Z" fill="#FF1638" opacity="0.9" />
+      <path d="M50 32 L62 56 L38 56 Z" fill="var(--accent-red)" opacity="0.9" />
       <path d="M50 40 L68 66 L32 66 Z" fill="#FFFFFF" opacity="0.7" />
       <circle cx="50" cy="50" r="2" fill="#FFFFFF" />
     </svg>
@@ -30,16 +30,18 @@ export default function TechPageLoader({ duration = 500, onComplete }) {
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
+    let animationFrame;
+    const startTime = performance.now();
     const hexes = ['0x1F', '0x4E', '0x8A', '0xCF', '0x99', '0xFF', '0x7F', '0xB3', '0x9E', '0x5C'];
-    const startTime = Date.now();
-    const tickInterval = 5; // update every 5ms for ultra-fast 0.5-second progress
 
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
+    const step = (now) => {
+      const elapsed = now - startTime;
       const calculatedProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
 
       setProgress(calculatedProgress);
-      setHexCode(hexes[Math.floor(Math.random() * hexes.length)]);
+      if (Math.random() < 0.25) {
+        setHexCode(hexes[Math.floor(Math.random() * hexes.length)]);
+      }
 
       if (calculatedProgress < 25) {
         setSubText('INITIALIZING SECTOR 04 RELAYS');
@@ -54,16 +56,18 @@ export default function TechPageLoader({ duration = 500, onComplete }) {
       }
 
       if (elapsed >= duration) {
-        clearInterval(interval);
         setProgress(100);
         setIsFading(true);
         setTimeout(() => {
           if (onComplete) onComplete();
-        }, 200); // 200ms rapid fade out transition
+        }, 150);
+      } else {
+        animationFrame = requestAnimationFrame(step);
       }
-    }, tickInterval);
+    };
 
-    return () => clearInterval(interval);
+    animationFrame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrame);
   }, [duration, onComplete]);
 
   return (

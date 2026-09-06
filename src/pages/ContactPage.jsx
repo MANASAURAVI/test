@@ -8,7 +8,6 @@ import {
   TerminalIcon
 } from '../components/Icons';
 import { conferenceData } from '../data/conferenceData';
-import SnowEffect from '../components/SnowEffect';
 
 function SocialXIcon({ size = 18 }) {
   return (
@@ -57,22 +56,22 @@ function PaperBoatIcon({ size = 54 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* Main Hull */}
-      <polygon points="6,38 22,52 42,52 58,38 12,38" fill="url(#hullGrad)" stroke="#FF1638" strokeWidth="2" strokeLinejoin="round" />
+      <polygon points="6,38 22,52 42,52 58,38 12,38" fill="url(#hullGrad)" stroke="var(--accent-red)" strokeWidth="2" strokeLinejoin="round" />
       {/* Front Sail */}
       <polygon points="32,6 32,36 52,36" fill="url(#sailFront)" stroke="#FFFFFF" strokeWidth="1.5" strokeLinejoin="round" />
       {/* Back Sail */}
       <polygon points="32,10 32,36 16,36" fill="url(#sailBack)" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinejoin="round" />
       {/* Mast */}
-      <line x1="32" y1="4" x2="32" y2="38" stroke="#FF1638" strokeWidth="2" strokeLinecap="round" />
+      <line x1="32" y1="4" x2="32" y2="38" stroke="var(--accent-red)" strokeWidth="2" strokeLinecap="round" />
       {/* Flag */}
-      <polygon points="32,4 40,8 32,12" fill="#FF1638" />
+      <polygon points="32,4 40,8 32,12" fill="var(--accent-red)" />
       {/* Envelope Badge */}
       <rect x="28" y="24" width="8" height="6" rx="1" fill="#FFFFFF" />
-      <path d="M28 24L32 27L36 24" stroke="#FF1638" strokeWidth="1" />
+      <path d="M28 24L32 27L36 24" stroke="var(--accent-red)" strokeWidth="1" />
 
       <defs>
         <linearGradient id="hullGrad" x1="6" y1="38" x2="58" y2="52" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#FF1638" />
+          <stop stopColor="var(--accent-red)" />
           <stop offset="1" stopColor="#990B20" />
         </linearGradient>
         <linearGradient id="sailFront" x1="32" y1="6" x2="52" y2="36" gradientUnits="userSpaceOnUse">
@@ -91,9 +90,9 @@ function PaperBoatIcon({ size = 54 }) {
 function BoyNodeIcon({ size = 36 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 36 36" fill="none">
-      <circle cx="18" cy="18" r="17" fill="#0D1217" stroke="#FF1638" strokeWidth="1.5" />
-      <circle cx="18" cy="12" r="5" fill="#FF1638" />
-      <path d="M9 26C9 21.5 13 20 18 20C23 20 27 21.5 27 26" stroke="#FF1638" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="18" cy="18" r="17" fill="#0D1217" stroke="var(--accent-red)" strokeWidth="1.5" />
+      <circle cx="18" cy="12" r="5" fill="var(--accent-red)" />
+      <path d="M9 26C9 21.5 13 20 18 20C23 20 27 21.5 27 26" stroke="var(--accent-red)" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -139,7 +138,6 @@ export default function ContactPage() {
 
   return (
     <div className="contact-page-wrapper">
-      <SnowEffect />
 
       {/* ── FULL PAGE HIMALAYAN BACKGROUND IMAGE ── */}
       <div className="contact-page-bg">
@@ -188,7 +186,7 @@ export default function ContactPage() {
               <div className="contact-channel-card">
                 <div className="channel-card-top">
                   <div className="channel-icon-wrap">
-                    <MailIcon size={18} color="#FF1638" />
+                    <MailIcon size={18} color="var(--accent-red)" />
                   </div>
                   <div className="channel-meta">
                     <span className="channel-dept-label">GENERAL ENQUIRIES</span>
@@ -216,7 +214,7 @@ export default function ContactPage() {
               <div className="contact-channel-card">
                 <div className="channel-card-top">
                   <div className="channel-icon-wrap">
-                    <ShieldCheckIcon size={18} color="#FF1638" />
+                    <ShieldCheckIcon size={18} color="var(--accent-red)" />
                   </div>
                   <div className="channel-meta">
                     <span className="channel-dept-label">SPONSORSHIPS &amp; MEDIA</span>
@@ -244,7 +242,7 @@ export default function ContactPage() {
               <div className="contact-channel-card">
                 <div className="channel-card-top">
                   <div className="channel-icon-wrap">
-                    <TerminalIcon size={18} color="#FF1638" />
+                    <TerminalIcon size={18} color="var(--accent-red)" />
                   </div>
                   <div className="channel-meta">
                     <span className="channel-dept-label">CALL FOR PAPERS (CFP)</span>
@@ -273,7 +271,7 @@ export default function ContactPage() {
             {/* Location & Coordinates Telemetry Card */}
             <div className="contact-location-telemetry">
               <div className="telemetry-top">
-                <MapPinIcon size={18} color="#FF1638" />
+                <MapPinIcon size={18} color="var(--accent-red)" />
                 <span className="telemetry-head">VENUE COORDINATES &amp; LOCATION</span>
               </div>
               <div className="telemetry-body">
@@ -325,7 +323,7 @@ export default function ContactPage() {
                       
                       {/* River Waves SVG */}
                       <svg viewBox="0 0 300 50" className="journey-river-svg" preserveAspectRatio="none">
-                        <path d="M0 25 Q 75 10, 150 25 T 300 25" fill="none" stroke="rgba(255, 22, 56, 0.55)" strokeWidth="2.5" className="wave-line-1" />
+                        <path d="M0 25 Q 75 10, 150 25 T 300 25" fill="none" stroke="rgba(var(--accent-rgb), 0.55)" strokeWidth="2.5" className="wave-line-1" />
                         <path d="M0 36 Q 75 20, 150 36 T 300 36" fill="none" stroke="rgba(16, 185, 129, 0.45)" strokeWidth="2" className="wave-line-2" />
                       </svg>
                     </div>
@@ -354,7 +352,7 @@ export default function ContactPage() {
                 /* Success Dispatch State */
                 <div className="contact-success-box">
                   <div className="success-icon-wrap">
-                    <ShieldCheckIcon size={44} color="#FF1638" />
+                    <ShieldCheckIcon size={44} color="var(--accent-red)" />
                   </div>
                   <h3 className="success-heading">MESSAGE DISPATCHED</h3>
                   <p className="success-sub">

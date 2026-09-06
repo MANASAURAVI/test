@@ -72,7 +72,7 @@ export default function CTFSection({ onOpenRegister }) {
             {/* CTF DETAILS & PRIZES */}
             <div className="ctf-meta-footer">
               <div className="ctf-prize-box">
-                <TrophyIcon size={28} color="#FF1638" className="prize-icon" />
+                <TrophyIcon size={28} color="var(--accent-red)" className="prize-icon" />
                 <div>
                   <span className="prize-title">REWARDS & HARDWARE PRIZES</span>
                   <span className="prize-sub">Specialized hacking hardware, trophies, certificates & security gear for top 3 teams.</span>

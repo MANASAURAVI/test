@@ -45,14 +45,14 @@ export default function TopographicLines({ className = '' }) {
         />
 
         {/* Tactical Elevation Marker Lines */}
-        <circle cx="160" cy="240" r="3" fill="#FF1638" opacity="0.7" />
-        <line x1="160" y1="240" x2="240" y2="240" stroke="rgba(255, 22, 56, 0.35)" strokeWidth="1" />
+        <circle cx="160" cy="240" r="3" fill="var(--accent-red)" opacity="0.7" />
+        <line x1="160" y1="240" x2="240" y2="240" stroke="rgba(var(--accent-rgb), 0.35)" strokeWidth="1" />
         <text x="248" y="244" fill="rgba(167, 175, 185, 0.6)" fontSize="9" fontFamily="JetBrains Mono, monospace" letterSpacing="1">
           CONTOUR 1457M
         </text>
 
-        <circle cx="820" cy="620" r="2.5" fill="#FF1638" opacity="0.5" />
-        <line x1="820" y1="620" x2="880" y2="620" stroke="rgba(255, 22, 56, 0.25)" strokeWidth="1" />
+        <circle cx="820" cy="620" r="2.5" fill="var(--accent-red)" opacity="0.5" />
+        <line x1="820" y1="620" x2="880" y2="620" stroke="rgba(var(--accent-rgb), 0.25)" strokeWidth="1" />
         <text x="888" y="623" fill="rgba(167, 175, 185, 0.4)" fontSize="9" fontFamily="JetBrains Mono, monospace" letterSpacing="1">
           DHAULADHAR RANGE
         </text>

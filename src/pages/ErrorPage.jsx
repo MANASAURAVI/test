@@ -203,12 +203,12 @@ export default function ErrorPage({ code = '404', customSubhead, customDesc }) {
                 <div className="exped-radar-sweep" aria-hidden="true" />
                 <svg className="ring-svg" viewBox="0 0 100 100" fill="none">
                   {/* Outer Radar Crosshair Reticle Lines */}
-                  <circle cx="50" cy="50" r="48" stroke="rgba(255, 22, 56, 0.3)" strokeWidth="1" strokeDasharray="4 4" />
-                  <line x1="50" y1="0" x2="50" y2="100" stroke="rgba(255, 22, 56, 0.2)" strokeWidth="0.8" />
-                  <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(255, 22, 56, 0.2)" strokeWidth="0.8" />
+                  <circle cx="50" cy="50" r="48" stroke="rgba(var(--accent-rgb), 0.3)" strokeWidth="1" strokeDasharray="4 4" />
+                  <line x1="50" y1="0" x2="50" y2="100" stroke="rgba(var(--accent-rgb), 0.2)" strokeWidth="0.8" />
+                  <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(var(--accent-rgb), 0.2)" strokeWidth="0.8" />
 
                   {/* Red Zen Circle */}
-                  <circle cx="50" cy="50" r="42" stroke="#FF1638" strokeWidth="7" strokeDasharray="250 20" strokeLinecap="round" />
+                  <circle cx="50" cy="50" r="42" stroke="var(--accent-red)" strokeWidth="7" strokeDasharray="250 20" strokeLinecap="round" />
                   
                   {/* Silhouette Temple & Flying Birds */}
                   <path d="M50 32 L58 44 L42 44 Z M44 44 H56 V58 H44 Z M48 58 H52 V64 H48 Z" fill="#FFFFFF" opacity="0.95" />

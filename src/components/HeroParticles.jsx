@@ -32,6 +32,11 @@ export default function HeroParticles() {
     }));
 
     const render = () => {
+      if (document.documentElement.getAttribute('data-matrix-mode') === 'active') {
+        ctx.clearRect(0, 0, width, height);
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
       ctx.clearRect(0, 0, width, height);
 
       particles.forEach((p) => {

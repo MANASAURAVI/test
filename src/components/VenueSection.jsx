@@ -36,7 +36,7 @@ export default function VenueSection() {
           <div className="venue-card-content">
             <div className="venue-geo-badge">
               <div className="badge-row">
-                <MapPinIcon size={18} color="#FF1638" />
+                <MapPinIcon size={18} color="var(--accent-red)" />
                 <span className="badge-loc">DHARAMSHALA // HIMACHAL PRADESH</span>
               </div>
               <div className="badge-coords">
@@ -61,7 +61,7 @@ export default function VenueSection() {
           {/* FLIGHTS */}
           <div className="travel-card">
             <div className="travel-icon-box">
-              <PlaneIcon size={24} color="#FF1638" />
+              <PlaneIcon size={24} color="var(--accent-red)" />
             </div>
             <h4 className="travel-title">BY AIR</h4>
             <p className="travel-desc">
@@ -72,7 +72,7 @@ export default function VenueSection() {
           {/* TRAIN */}
           <div className="travel-card">
             <div className="travel-icon-box">
-              <TrainIcon size={24} color="#FF1638" />
+              <TrainIcon size={24} color="var(--accent-red)" />
             </div>
             <h4 className="travel-title">BY RAIL</h4>
             <p className="travel-desc">
@@ -83,7 +83,7 @@ export default function VenueSection() {
           {/* ACCOMMODATION */}
           <div className="travel-card">
             <div className="travel-icon-box">
-              <HotelIcon size={24} color="#FF1638" />
+              <HotelIcon size={24} color="var(--accent-red)" />
             </div>
             <h4 className="travel-title">ACCOMMODATION</h4>
             <p className="travel-desc">

@@ -29,7 +29,7 @@ function MailIcon({ size = 20, color = 'currentColor', strokeWidth = 2 }) {
 
 const BoxBorderDraw = () => (
   <svg className="box-draw-svg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }} preserveAspectRatio="none" aria-hidden="true">
-    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="10" fill="none" stroke="#FF1638" strokeWidth="1.5" pathLength="100" />
+    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="10" fill="none" stroke="var(--accent-red)" strokeWidth="1.5" pathLength="100" />
   </svg>
 );
 
@@ -87,7 +87,7 @@ export default function CodeOfConductPage() {
                 <span className="hud-tick bl" />
                 <span className="hud-tick br" />
                 <div className="coc-pillar-icon">
-                  <UsersIcon size={20} color="#FF1638" />
+                  <UsersIcon size={20} color="var(--accent-red)" />
                 </div>
                 <div className="coc-pillar-content">
                   <h4>Mutual Respect</h4>
@@ -102,7 +102,7 @@ export default function CodeOfConductPage() {
                 <span className="hud-tick bl" />
                 <span className="hud-tick br" />
                 <div className="coc-pillar-icon">
-                  <ShieldCheckIcon size={20} color="#FF1638" />
+                  <ShieldCheckIcon size={20} color="var(--accent-red)" />
                 </div>
                 <div className="coc-pillar-content">
                   <h4>Zero Harassment</h4>
@@ -117,7 +117,7 @@ export default function CodeOfConductPage() {
                 <span className="hud-tick bl" />
                 <span className="hud-tick br" />
                 <div className="coc-pillar-icon">
-                  <AlertOctagonIcon size={20} color="#FF1638" />
+                  <AlertOctagonIcon size={20} color="var(--accent-red)" />
                 </div>
                 <div className="coc-pillar-content">
                   <h4>Prompt Action</h4>
@@ -141,7 +141,7 @@ export default function CodeOfConductPage() {
                 <div className="coc-policy-header">
                   <span className="coc-section-num">01</span>
                   <div className="coc-section-title-wrap">
-                    <UsersIcon size={18} color="#FF1638" />
+                    <UsersIcon size={18} color="var(--accent-red)" />
                     <h3>Scope &amp; Community Standards</h3>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export default function CodeOfConductPage() {
                 <div className="coc-policy-header">
                   <span className="coc-section-num">02</span>
                   <div className="coc-section-title-wrap">
-                    <ShieldCheckIcon size={18} color="#FF1638" />
+                    <ShieldCheckIcon size={18} color="var(--accent-red)" />
                     <h3>Anti-Harassment Commitment</h3>
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export default function CodeOfConductPage() {
                 <div className="coc-policy-header">
                   <span className="coc-section-num">03</span>
                   <div className="coc-section-title-wrap">
-                    <ShieldIcon size={18} color="#FF1638" />
+                    <ShieldIcon size={18} color="var(--accent-red)" />
                     <h3>Enforcement &amp; Incident Reporting</h3>
                   </div>
                 </div>

@@ -2,26 +2,26 @@ import React from 'react';
 
 // SVG Icons for HUD Details & Pillars
 const LayerIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF1638" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
   </svg>
 );
 
 const MapPinIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF1638" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
     <circle cx="12" cy="10" r="3" />
   </svg>
 );
 
 const MountainIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF1638" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M8 3l4 8 5-5 5 15H2L8 3z" />
   </svg>
 );
 
 const CrosshairIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF1638" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="9" />
     <line x1="12" y1="1" x2="12" y2="5" />
     <line x1="12" y1="19" x2="12" y2="23" />
@@ -45,7 +45,7 @@ const BeakerIcon = () => (
 );
 
 const UsersIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF1638" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-red)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
     <circle cx="9" cy="7" r="4" />
     <path d="M23 21v-2a4 4 0 0 1 0 7.75" />
@@ -60,7 +60,7 @@ const MountainWireframe = () => (
 
 const BoxBorderDraw = () => (
   <svg className="box-draw-svg" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
-    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="6" fill="none" stroke="#FF1638" strokeWidth="1.5" pathLength="100" />
+    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="6" fill="none" stroke="var(--accent-red)" strokeWidth="1.5" pathLength="100" />
   </svg>
 );
 

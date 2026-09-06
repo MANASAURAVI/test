@@ -5,7 +5,7 @@ export default function SnowEffect() {
   const [useStaticFallback, setUseStaticFallback] = useState(false);
 
   useEffect(() => {
-    // 1. Detect slow network or reduced motion preferences
+    // Detect slow network or reduced motion preferences
     const isSlowConnection = 
       navigator.connection && 
       (navigator.connection.effectiveType === '2g' || 
@@ -16,11 +16,7 @@ export default function SnowEffect() {
       window.matchMedia && 
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const isLowPowerDevice = 
-      navigator.hardwareConcurrency && 
-      navigator.hardwareConcurrency <= 2;
-
-    if (isSlowConnection || prefersReducedMotion || isLowPowerDevice) {
+    if (isSlowConnection || prefersReducedMotion) {
       setUseStaticFallback(true);
       return;
     }
@@ -33,7 +29,7 @@ export default function SnowEffect() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Mouse tracking with smooth momentum interpolation
+    // Mouse tracking for subtle wind sway
     let mouseX = width / 2;
     let targetWindX = 0;
     let currentWindX = 0;
@@ -41,17 +37,8 @@ export default function SnowEffect() {
     const handleMouseMove = (e) => {
       mouseX = e.clientX;
       const normX = (mouseX - width / 2) / (width / 2);
-      targetWindX = normX * 1.5;
+      targetWindX = normX * 1.6;
     };
-
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('resize', handleResize);
 
     // ── PRE-RENDER MULTI-LAYER STAMPS (Glow, Core, Blur) ──
     const layersConfig = [
@@ -103,27 +90,27 @@ export default function SnowEffect() {
       return closest;
     };
 
-    // ── LIGHTWEIGHT OPTIMIZED SNOW PARTICLES (Max 75 for ultra lightness) ──
-    const particleCount = Math.min(Math.floor(width / 14), 75);
+    // ── FALLING SNOW PARTICLES ──
+    const particleCount = Math.min(Math.floor(width / 10), 110);
     const particles = Array.from({ length: particleCount }, () => {
       const depthRand = Math.random();
       let depth, radius, speedY, baseOpacity;
 
-      if (depthRand < 0.5) {
+      if (depthRand < 0.4) {
         depth = 0.4;
         radius = Math.random() * 1.0 + 1.0;
-        speedY = Math.random() * 0.4 + 0.4;
+        speedY = Math.random() * 0.6 + 0.6;
         baseOpacity = Math.random() * 0.3 + 0.3;
-      } else if (depthRand < 0.85) {
+      } else if (depthRand < 0.8) {
         depth = 0.8;
         radius = Math.random() * 1.5 + 2.0;
-        speedY = Math.random() * 0.7 + 0.7;
+        speedY = Math.random() * 0.9 + 0.9;
         baseOpacity = Math.random() * 0.3 + 0.5;
       } else {
         depth = 1.2;
-        radius = Math.random() * 2.0 + 3.8;
-        speedY = Math.random() * 1.0 + 1.2;
-        baseOpacity = Math.random() * 0.2 + 0.75;
+        radius = Math.random() * 2.2 + 3.5;
+        speedY = Math.random() * 1.2 + 1.4;
+        baseOpacity = Math.random() * 0.2 + 0.8;
       }
 
       const stampData = getStampForSize(radius);
@@ -135,29 +122,55 @@ export default function SnowEffect() {
         depth,
         stampData,
         speedY,
-        swayAmp: Math.random() * 1.2 + 0.4,
-        swayFreq: Math.random() * 0.015 + 0.005,
+        swayAmp: Math.random() * 1.4 + 0.5,
+        swayFreq: Math.random() * 0.018 + 0.006,
         step: Math.random() * Math.PI * 2,
         baseOpacity,
       };
     });
 
+    const handleResize = () => {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', handleResize);
+
     let globalTime = 0;
+    let currentSnowOpacity = 1.0;
 
     const render = () => {
-      // Skip rendering if page tab is hidden to save battery & CPU
-      if (document.hidden) {
+      if (document.hidden || document.documentElement.getAttribute('data-matrix-mode') === 'active') {
+        ctx.clearRect(0, 0, width, height);
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
+
+      const tempMode = document.body.getAttribute('data-temp-mode');
+      const isWarm = tempMode === 'warm';
+      const targetSnowOpacity = isWarm ? 0.0 : 1.0;
+
+      // Smoothly transition snow opacity over 1 second
+      currentSnowOpacity += (targetSnowOpacity - currentSnowOpacity) * 0.05;
+
+      ctx.clearRect(0, 0, width, height);
+
+      // If temperature is higher and snow has completely faded out, pause particle drawing
+      if (currentSnowOpacity <= 0.005) {
         animationFrameId = requestAnimationFrame(render);
         return;
       }
 
       globalTime += 0.01;
-      ctx.clearRect(0, 0, width, height);
 
       currentWindX += (targetWindX - currentWindX) * 0.03;
-      const breeze = Math.sin(globalTime * 0.5) * 0.3;
+      const breeze = Math.sin(globalTime * 0.5) * 0.35;
 
-      particles.forEach((p) => {
+      // UPDATE & DRAW FALLING PARTICLES
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
         p.step += p.swayFreq;
         const totalWindX = (currentWindX + breeze) * p.depth;
         const swayX = Math.sin(p.step) * p.swayAmp * p.depth;
@@ -165,20 +178,23 @@ export default function SnowEffect() {
         p.x += swayX + totalWindX;
         p.y += p.speedY * p.depth;
 
+        // Screen wrap-around for top/bottom/sides
         if (p.y > height + 20) {
           p.y = -20;
           p.x = Math.random() * (width + 200) - 100;
         }
-        if (p.x > width + 30) {
-          p.x = -30;
-        } else if (p.x < -30) {
-          p.x = width + 30;
+
+        if (p.x > width + 40) {
+          p.x = -40;
+        } else if (p.x < -40) {
+          p.x = width + 40;
         }
 
-        ctx.globalAlpha = p.baseOpacity;
+        // Draw falling particle with temperature opacity multiplier
+        ctx.globalAlpha = Math.max(0, p.baseOpacity * currentSnowOpacity);
         const { stamp, radius, pad } = p.stampData;
         ctx.drawImage(stamp, p.x - radius - pad, p.y - radius - pad);
-      });
+      }
 
       ctx.globalAlpha = 1.0;
       animationFrameId = requestAnimationFrame(render);
@@ -194,7 +210,6 @@ export default function SnowEffect() {
   }, []);
 
   if (useStaticFallback) {
-    // Lightweight static overlay image for slow networks / low power devices
     return (
       <div 
         style={{

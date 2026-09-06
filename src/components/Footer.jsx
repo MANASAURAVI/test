@@ -29,16 +29,16 @@ const MountainWireframeIcon = () => (
 
 const TopoBgSvg = () => (
   <svg className="footer-topo-svg" viewBox="0 0 900 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M-100 180 C 100 130, 250 280, 450 160 C 600 80, 750 230, 950 180" stroke="rgba(255, 22, 56, 0.12)" strokeWidth="1.2" />
-    <path d="M-100 280 C 150 200, 300 360, 500 230 C 650 130, 800 300, 950 260" stroke="rgba(255, 22, 56, 0.09)" strokeWidth="1.2" />
-    <path d="M-100 380 C 120 300, 320 430, 520 300 C 700 200, 820 380, 950 330" stroke="rgba(255, 22, 56, 0.07)" strokeWidth="1.2" />
-    <path d="M-100 480 C 80 380, 280 500, 480 380 C 640 280, 780 460, 950 400" stroke="rgba(255, 22, 56, 0.05)" strokeWidth="1.2" />
+    <path d="M-100 180 C 100 130, 250 280, 450 160 C 600 80, 750 230, 950 180" stroke="rgba(var(--accent-rgb), 0.12)" strokeWidth="1.2" />
+    <path d="M-100 280 C 150 200, 300 360, 500 230 C 650 130, 800 300, 950 260" stroke="rgba(var(--accent-rgb), 0.09)" strokeWidth="1.2" />
+    <path d="M-100 380 C 120 300, 320 430, 520 300 C 700 200, 820 380, 950 330" stroke="rgba(var(--accent-rgb), 0.07)" strokeWidth="1.2" />
+    <path d="M-100 480 C 80 380, 280 500, 480 380 C 640 280, 780 460, 950 400" stroke="rgba(var(--accent-rgb), 0.05)" strokeWidth="1.2" />
   </svg>
 );
 
 const BoxBorderDraw = () => (
   <svg className="box-draw-svg" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
-    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="6" fill="none" stroke="#FF1638" strokeWidth="1.5" pathLength="100" />
+    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="6" fill="none" stroke="var(--accent-red)" strokeWidth="1.5" pathLength="100" />
   </svg>
 );
 
@@ -103,12 +103,13 @@ export default function Footer() {
           <span className="card-box-tick bl" />
           <span className="card-box-tick br" />
 
-          <Link to="/" className="footer-logo-link">
+          <Link to="/" className="footer-logo-link" style={{ display: 'inline-flex', alignItems: 'center' }}>
             <img
               src="/logo/logo.png"
               alt="BSides Dharamshala Logo"
               className="footer-logo-img"
             />
+            <span className="matrix-nav-prompt">&gt; root@bsides:~#</span>
           </Link>
 
           <div className="footer-motto-tag">

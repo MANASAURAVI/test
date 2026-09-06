@@ -39,7 +39,7 @@ function ChevronDownIcon({ size = 18 }) {
 
 const BoxBorderDraw = ({ rx = "6" }) => (
   <svg className="box-draw-svg" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
-    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx={rx} fill="none" stroke="#FF1638" strokeWidth="1.5" pathLength="100" />
+    <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx={rx} fill="none" stroke="var(--accent-red)" strokeWidth="1.5" pathLength="100" />
   </svg>
 );
 
@@ -89,7 +89,7 @@ export default function CFPPage() {
             <h1 className="cfp-hero-main-title">
               CALL FOR <span className="title-brush text-highlight-red minimal-brush-highlight">PAPERS</span>
             </h1>
-            <div className="cfp-hero-event-name" style={{ color: '#FF1638', marginTop: '4px', marginBottom: '12px' }}>
+            <div className="cfp-hero-event-name" style={{ color: 'var(--accent-red)', marginTop: '4px', marginBottom: '12px' }}>
               {callForPapers.event}
             </div>
             <p className="contact-header-sub">
@@ -593,7 +593,7 @@ export default function CFPPage() {
               )}
 
               {activeTrack.footer && (
-                <p className="cfp-modal-desc" style={{ marginTop: '16px', color: '#FF1638', fontWeight: 600 }}>
+                <p className="cfp-modal-desc" style={{ marginTop: '16px', color: 'var(--accent-red)', fontWeight: 600 }}>
                   {activeTrack.footer}
                 </p>
               )}
