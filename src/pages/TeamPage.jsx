@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 import { Link } from 'react-router-dom';
 import TopographicLines from '../components/TopographicLines';
